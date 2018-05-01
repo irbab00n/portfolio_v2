@@ -1,0 +1,15 @@
+### node etc ###
+
+# Dependency directorys
+# Deployed apps should consider commenting these lines out:
+# see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
+node_modules/
+
+#Package-lock
+package-lock.json
+
+#Bundle files
+client/public/bundle.js
+client/public/bundle.js.map
+client/public/style.css
+client/public/style.css.map
