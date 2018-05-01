@@ -1,4 +1,5 @@
 import React from 'react';
+import Navigation from './components/Navigation/index.jsx';
 
 import './sass/main.scss';
 
@@ -13,7 +14,9 @@ export default class App extends React.Component {
     return (
 
       <div>
-        Hello from your app!
+
+        <Navigation />
+
       </div>
 
     );
