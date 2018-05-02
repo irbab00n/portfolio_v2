@@ -5,10 +5,12 @@
 
     The rule of thumb for this folder is that it should not output a single line of CSS when compiled on its own. These are nothing but Sass helpers.
 */
+@import 'abstracts/helpers';
+@import 'abstracts/mixins';
 @import 'abstracts/variables';
 
 
-/** 
+/**
   Base:
   
     The base/ folder holds what we might call the boilerplate code for the project. In there, you might find some typographic rules, and probably a stylesheet (that I’m used to calling _base.scss), defining some standard styles for commonly used HTML elements.
@@ -22,7 +24,8 @@
 
     For small components, there is the components/ folder. While layout/ is macro (defining the global wireframe), components/ is more focused on widgets. It contains all kind of specific modules like a slider, a loader, a widget, and basically anything along those lines. There are usually a lot of files in components/ since the whole site/application should be mostly composed of tiny modules.
 */
-@import 'components/navigation';
+@import 'components/button';
+@import 'components/mobile-menu';
 
 
 /** 
@@ -30,7 +33,9 @@
   
   The layout/ folder contains everything that takes part in laying out the site or application. This folder could have stylesheets for the main parts of the site (header, footer, navigation, sidebar…), the grid system or even CSS styles for all the forms.
 */
-// @import 'layout/'
+
+/* NAVIGATION LAYOUT */
+@import 'layout/navigation';
 
 
 /** 
