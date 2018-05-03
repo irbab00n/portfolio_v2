@@ -25,9 +25,9 @@
 }
 
 .navigation-logo {
-  background: url(https://s20.postimg.cc/fehb8hpot/logo.png) no-repeat left center; // serve your asset from here
+  background: url(https://s20.postimg.cc/fehb8hpot/logo.png) no-repeat left center; // your logo asset goes here
   background-size: contain;
-  margin-left: 2vw;
+  margin-left: 4vw;
   min-height: 4vh;
   width: 100%;
   opacity: 1.0;
@@ -46,83 +46,13 @@
 }
 
 .navigation-nav-link {
-  margin-right: 2vw;
+  margin-right: 4vw;
 }
 
-
-// MOBILE NAVIGATION LAYOUT
-
-
-.mobile-nav-wrapper, .mobile-nav-toggle {
-  @include justify-end;
-  cursor: pointer;
-  position: absolute;
-  display: none;
-  height: $navigation-height / 3 * 2;
-  width: $navigation-height / 3 * 2;
-  z-index: 1000;
-}
-
-.mobile-nav-toggle {
-  cursor: pointer;
-  display: block;
-}
-
-.mobile-nav-toggle > span {
-  @include menu-bar(($navigation-height / 2) / 9, ($navigation-height / 2) / 9);
-}
-
-.mobile-nav-toggle > span::before {
-  @include menu-bar(($navigation-height / 2) / 9, (($navigation-height / 2) / 9) * 3);
-}
-
-.mobile-nav-toggle > span::after {
-  @include menu-bar(($navigation-height / 2) / 9, (($navigation-height / 2) / 9) * 6);
-}
-
-.mobile-nav-toggle.is-active > span {
-  background-color: transparent;
-}
-.mobile-nav-toggle.is-active > span::before {
-  top: (($navigation-height / 2) / 9) * 3;
-  background-color: $bg-mobile-nav-active;
-  -webkit-transform: rotate(45deg) translate;
-  transform: rotate(45deg) translate(0px, 0px);
-}
-.mobile-nav-toggle.is-active > span::after {
-  top: (($navigation-height / 2) / 9) * 3;
-  background-color: $bg-mobile-nav-active;
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-}
-
-.mobile-nav-menu {
-  position: absolute;
-  display: block;
-  top: 0;
-  opacity: 0;
-  margin-top: $navigation-height;
-  transition: $standard-transition;
-  z-index: 2000;
-  height: 0vh;
-}
-
-.mobile-nav-menu.is-active {
-  position: absolute;
-  width: 100%;
-  opacity: 1.0;
-  height: 100vh;
-  background-color: #007ac1;
-  overflow-y: scroll;
-  pointer-events: auto;
-}
-
-.mobile-nav-content {
-  padding: 4vh 4vw;
-}
 
 
 @media screen and (orientation: landscape) and (max-width: 1200px) {
+
   .navigation {
     height: $navigation-height-mobile-landscape;
   }
@@ -143,43 +73,10 @@
     display: none;
   }
 
-  .mobile-nav-wrapper, .mobile-nav-toggle {
-    height: $navigation-height-mobile-landscape / 2;
-    width: $navigation-height-mobile-landscape / 2;
-  }
-
-  .mobile-nav-wrapper {
-    display: block;
-    right: 2vw;
-  }
-
-  .mobile-nav-toggle > span {
-    @include menu-bar(($navigation-height-mobile-landscape / 2) / 9, ($navigation-height-mobile-landscape / 2) / 9);
-  }
-
-  .mobile-nav-toggle > span::before {
-    @include menu-bar(($navigation-height-mobile-landscape / 2) / 9, (($navigation-height-mobile-landscape / 2) / 9) * 3);
-  }
-
-  .mobile-nav-toggle > span::after {
-    @include menu-bar(($navigation-height-mobile-landscape / 2) / 9, (($navigation-height-mobile-landscape / 2) / 9) * 6);
-  }
-
-  .mobile-nav-toggle.is-active > span::before {
-    top: (($navigation-height-mobile-landscape / 2) / 9) * 3;
-  }
-
-  .mobile-nav-toggle.is-active > span::after {
-    top: (($navigation-height-mobile-landscape / 2) / 9) * 3;
-  }
-
-  .mobile-nav-menu {
-    margin-top: $navigation-height-mobile-landscape;
-  }
-
 }
 
 @media screen and (orientation: portrait) and (max-width: 1200px) {
+
   .navigation {
     height: $navigation-height-mobile-portrait;
   }
@@ -196,42 +93,8 @@
     min-height: $navigation-height-mobile-portrait / 2;
   }
 
-  .mobile-nav-wrapper, .mobile-nav-toggle {
-    height: $navigation-height-mobile-portrait / 2;
-    width: $navigation-height-mobile-portrait / 2;
-  }
-
   .navigation-nav-wrapper {
     display: none;
-  }
-
-  .mobile-nav-wrapper {
-    display: block;
-    right: 2vw;
-  }
-
-  .mobile-nav-toggle > span {
-    @include menu-bar(($navigation-height-mobile-portrait / 2) / 9, ($navigation-height-mobile-portrait / 2) / 9 );
-  }
-
-  .mobile-nav-toggle > span::before {
-    @include menu-bar(($navigation-height-mobile-portrait / 2) / 9, (($navigation-height-mobile-portrait / 2) / 9) * 3);
-  }
-
-  .mobile-nav-toggle > span::after {
-    @include menu-bar(($navigation-height-mobile-portrait / 2) / 9, (($navigation-height-mobile-portrait / 2) / 9) * 6);
-  }
-
-  .mobile-nav-toggle.is-active > span::before {
-    top: (($navigation-height-mobile-portrait / 2) / 9) * 3;
-  }
-
-  .mobile-nav-toggle.is-active > span::after {
-    top: (($navigation-height-mobile-portrait / 2) / 9) * 3;
-  }
-
-  .mobile-nav-menu {
-    margin-top: $navigation-height-mobile-portrait;
   }
 
 }

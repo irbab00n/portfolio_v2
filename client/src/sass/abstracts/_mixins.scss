@@ -107,6 +107,12 @@ EXAMPLE USAGE OF ANIMATE & KEYFRAMES @mixins
 
 // Mobile Menu Mixins
 
+@mixin mobile-nav-toggle-active($rotate) {
+  background-color: $bg-mobile-nav-active;
+  -webkit-transform: rotate($rotate);
+  transform: rotate($rotate);
+}
+
 @mixin menu-bar($height, $top-spacing) {
   background-color: $bg-mobile-nav-inactive;
   content: "";

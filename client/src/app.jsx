@@ -11,11 +11,15 @@ export default class App extends React.Component {
 
   render() {
 
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
     return (
 
       <div className="content-body">
 
-        <Navigation />
+        <Navigation 
+          isMobile={isMobile}
+        />
 
         <div className="navigation-gutter"/>
 

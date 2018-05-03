@@ -7,16 +7,20 @@ export default class Navigation extends React.Component {
   }
 
   handleClick(e) {
-    let html = document.getElementsByTagName('html')[0];
-    let wrapper = document.getElementsByClassName('mobile-nav-toggle')[0];
-    let menu = document.getElementsByClassName('mobile-nav-menu')[0];
+    e.preventDefault();
 
-    html.classList.toggle('no-scroll');
-    wrapper.classList.toggle('is-active');
-    menu.classList.toggle('is-active');
+    let html = document.getElementsByTagName('html')[0];
+    let mobileNavToggle = document.getElementsByClassName('mobile-nav-toggle')[0];
+    let mobileNavMenu = document.getElementsByClassName('mobile-nav-menu')[0];
+
+    html.classList.toggle('no-scroll'); // Prevents background content from being moved while menu is active
+    mobileNavToggle.classList.toggle('is-active'); // 
+    mobileNavMenu.classList.toggle('is-active'); // Toggle the menu on/off
   }
 
   render() {
+
+    const { isMobile } = this.props;
 
     return (
 
@@ -36,15 +40,27 @@ export default class Navigation extends React.Component {
         </div>
 
         <div className="mobile-nav-wrapper">
-          <a className="mobile-nav-toggle" onClick={(e) => this.handleClick(e)}>
+          <a className="mobile-nav-toggle"
+            onClick={isMobile ? (e) => {e.preventDefault()} : (e) => this.handleClick(e)}
+            onTouchEnd={(e) => this.handleClick(e)}
+          >
             <span></span>
           </a>
         </div>
 
         <div className="mobile-nav-menu">
           <div className="mobile-nav-content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin orci at malesuada fringilla. Etiam tincidunt id tellus eu feugiat. Sed auctor tempor massa eget efficitur. Praesent eu metus malesuada, iaculis magna in, malesuada libero. Vivamus tincidunt venenatis tempus. Donec eu tincidunt velit.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin orci at malesuada fringilla. Etiam tincidunt id tellus eu feugiat. Sed auctor tempor massa eget efficitur. Praesent eu metus malesuada, iaculis magna in, malesuada libero. Vivamus tincidunt venenatis tempus. Donec eu tincidunt velit.</p>
+            <ul>
+              <li>
+                <a href="/">Link 1</a>
+              </li>
+              <li>
+                <a href="/">Link 2</a>
+              </li>
+              <li>
+                <a href="/">Link 3</a>
+              </li>
+            </ul>
           </div>
         </div>
 
