@@ -1,4 +1,9 @@
 body {
-  background-color: $bg-primary-color;
+  margin: 0;
+  background-color: $bg-secondary-color;
   color: $text-primary-color;
+}
+
+.content-body {
+  background-color: $bg-primary-color;
 }
