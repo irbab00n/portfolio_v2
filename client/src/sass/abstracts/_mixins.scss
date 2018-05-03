@@ -105,6 +105,22 @@ EXAMPLE USAGE OF ANIMATE & KEYFRAMES @mixins
 
 */
 
+// Mobile Menu Mixins
+
+@mixin menu-bar($height, $top-spacing) {
+  background-color: $bg-mobile-nav-inactive;
+  content: "";
+  cursor: pointer;
+  display: block;
+  height: $height;
+  position: absolute;
+  top: $top-spacing;
+  width: 100%;
+  transition: $standard-transition;
+}
+
+
+
 
 
 

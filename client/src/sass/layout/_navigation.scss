@@ -50,92 +50,76 @@
 }
 
 
+// MOBILE NAVIGATION LAYOUT
 
 
-
-
-.mobile-nav-wrapper {
+.mobile-nav-wrapper, .mobile-nav-toggle {
   @include justify-end;
   cursor: pointer;
   position: absolute;
   display: none;
-  height: 26px;
-  width: 26px;
+  height: $navigation-height / 3 * 2;
+  width: $navigation-height / 3 * 2;
   z-index: 1000;
 }
 
 .mobile-nav-toggle {
   cursor: pointer;
   display: block;
-  height: 26px;
-  width: 26px;
 }
 
 .mobile-nav-toggle > span {
-  background-color: $bg-primary-color;
-  border-radius: 1px;
-  content: "";
-  cursor: pointer;
-  display: block;
-  height: 2px;
-  position: absolute;
-  top: 4px;
-  width: 26px;
-  transition: 0.4s;
+  @include menu-bar(($navigation-height / 2) / 9, ($navigation-height / 2) / 9);
 }
 
 .mobile-nav-toggle > span::before {
-  background-color: $bg-primary-color;
-  border-radius: 1px;
-  content: "";
-  cursor: pointer;
-  display: block;
-  height: 2px;
-  position: absolute;
-  top: 8px;
-  width: 26px;
-  transition: 0.4s;
+  @include menu-bar(($navigation-height / 2) / 9, (($navigation-height / 2) / 9) * 3);
 }
 
 .mobile-nav-toggle > span::after {
-  background-color: $bg-primary-color;
-  border-radius: 1px;
-  content: "";
-  cursor: pointer;
-  display: block;
-  height: 2px;
-  position: absolute;
-  top: 16px;
-  width: 26px;
-  transition: 0.4s;
+  @include menu-bar(($navigation-height / 2) / 9, (($navigation-height / 2) / 9) * 6);
 }
 
 .mobile-nav-toggle.is-active > span {
   background-color: transparent;
 }
 .mobile-nav-toggle.is-active > span::before {
-  top: 8px;
-  -webkit-transform: rotate(45deg) translate(0px, 0px);
+  top: (($navigation-height / 2) / 9) * 3;
+  background-color: $bg-mobile-nav-active;
+  -webkit-transform: rotate(45deg) translate;
   transform: rotate(45deg) translate(0px, 0px);
 }
 .mobile-nav-toggle.is-active > span::after {
-  top: 8px;
-  -webkit-transform: rotate(-45deg) translate(0px, 0px);
-  transform: rotate(-45deg) translate(0px, 0px);
+  top: (($navigation-height / 2) / 9) * 3;
+  background-color: $bg-mobile-nav-active;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 .mobile-nav-menu {
   position: absolute;
-  display: none;
+  display: block;
+  top: 0;
+  opacity: 0;
   margin-top: $navigation-height;
+  transition: $standard-transition;
+  z-index: 2000;
+  height: 0vh;
 }
 
 .mobile-nav-menu.is-active {
-  display: block;
-  background-color: $bg-tertiary-color;
+  position: absolute;
+  width: 100%;
+  opacity: 1.0;
+  height: 100vh;
+  background-color: #007ac1;
+  overflow-y: scroll;
+  pointer-events: auto;
 }
 
-
+.mobile-nav-content {
+  padding: 4vh 4vw;
+}
 
 
 @media screen and (orientation: landscape) and (max-width: 1200px) {
@@ -152,16 +136,41 @@
   }
 
   .navigation-logo {
-    min-height: $navigation-height-mobile-landscape / 3vh * 2vh;
+    min-height: $navigation-height-mobile-landscape / 2;
   }
 
   .navigation-nav-wrapper {
     display: none;
   }
 
+  .mobile-nav-wrapper, .mobile-nav-toggle {
+    height: $navigation-height-mobile-landscape / 2;
+    width: $navigation-height-mobile-landscape / 2;
+  }
+
   .mobile-nav-wrapper {
     display: block;
     right: 2vw;
+  }
+
+  .mobile-nav-toggle > span {
+    @include menu-bar(($navigation-height-mobile-landscape / 2) / 9, ($navigation-height-mobile-landscape / 2) / 9);
+  }
+
+  .mobile-nav-toggle > span::before {
+    @include menu-bar(($navigation-height-mobile-landscape / 2) / 9, (($navigation-height-mobile-landscape / 2) / 9) * 3);
+  }
+
+  .mobile-nav-toggle > span::after {
+    @include menu-bar(($navigation-height-mobile-landscape / 2) / 9, (($navigation-height-mobile-landscape / 2) / 9) * 6);
+  }
+
+  .mobile-nav-toggle.is-active > span::before {
+    top: (($navigation-height-mobile-landscape / 2) / 9) * 3;
+  }
+
+  .mobile-nav-toggle.is-active > span::after {
+    top: (($navigation-height-mobile-landscape / 2) / 9) * 3;
   }
 
   .mobile-nav-menu {
@@ -184,7 +193,12 @@
   }
 
   .navigation-logo {
-    min-height: $navigation-height-mobile-portrait / 3vh * 2vh;
+    min-height: $navigation-height-mobile-portrait / 2;
+  }
+
+  .mobile-nav-wrapper, .mobile-nav-toggle {
+    height: $navigation-height-mobile-portrait / 2;
+    width: $navigation-height-mobile-portrait / 2;
   }
 
   .navigation-nav-wrapper {
@@ -196,8 +210,28 @@
     right: 2vw;
   }
 
+  .mobile-nav-toggle > span {
+    @include menu-bar(($navigation-height-mobile-portrait / 2) / 9, ($navigation-height-mobile-portrait / 2) / 9 );
+  }
+
+  .mobile-nav-toggle > span::before {
+    @include menu-bar(($navigation-height-mobile-portrait / 2) / 9, (($navigation-height-mobile-portrait / 2) / 9) * 3);
+  }
+
+  .mobile-nav-toggle > span::after {
+    @include menu-bar(($navigation-height-mobile-portrait / 2) / 9, (($navigation-height-mobile-portrait / 2) / 9) * 6);
+  }
+
+  .mobile-nav-toggle.is-active > span::before {
+    top: (($navigation-height-mobile-portrait / 2) / 9) * 3;
+  }
+
+  .mobile-nav-toggle.is-active > span::after {
+    top: (($navigation-height-mobile-portrait / 2) / 9) * 3;
+  }
+
   .mobile-nav-menu {
-    margin-top: $navigation-height-mobile-landscape;
+    margin-top: $navigation-height-mobile-portrait;
   }
 
 }

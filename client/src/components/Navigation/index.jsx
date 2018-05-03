@@ -7,8 +7,13 @@ export default class Navigation extends React.Component {
   }
 
   handleClick(e) {
-    let wrapper = document.getElementsByClassName('mobile-nav-toggle');
-    wrapper[0].classList.toggle('is-active');
+    let html = document.getElementsByTagName('html')[0];
+    let wrapper = document.getElementsByClassName('mobile-nav-toggle')[0];
+    let menu = document.getElementsByClassName('mobile-nav-menu')[0];
+
+    html.classList.toggle('no-scroll');
+    wrapper.classList.toggle('is-active');
+    menu.classList.toggle('is-active');
   }
 
   render() {
@@ -34,6 +39,13 @@ export default class Navigation extends React.Component {
           <a className="mobile-nav-toggle" onClick={(e) => this.handleClick(e)}>
             <span></span>
           </a>
+        </div>
+
+        <div className="mobile-nav-menu">
+          <div className="mobile-nav-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin orci at malesuada fringilla. Etiam tincidunt id tellus eu feugiat. Sed auctor tempor massa eget efficitur. Praesent eu metus malesuada, iaculis magna in, malesuada libero. Vivamus tincidunt venenatis tempus. Donec eu tincidunt velit.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin orci at malesuada fringilla. Etiam tincidunt id tellus eu feugiat. Sed auctor tempor massa eget efficitur. Praesent eu metus malesuada, iaculis magna in, malesuada libero. Vivamus tincidunt venenatis tempus. Donec eu tincidunt velit.</p>
+          </div>
         </div>
 
       </section>
