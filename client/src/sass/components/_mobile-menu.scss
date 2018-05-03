@@ -81,6 +81,7 @@
 
   .mobile-nav-wrapper {
     display: block;
+    top: $navigation-height-mobile-landscape / 4;
     right: 2.5vw;
   }
 
@@ -127,6 +128,7 @@
 
   .mobile-nav-wrapper {
     display: block;
+    top: $navigation-height-mobile-portrait / 4;
     right: 4vw;
   }
 
