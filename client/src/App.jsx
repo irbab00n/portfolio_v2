@@ -57,7 +57,9 @@ export default class App extends React.Component {
           isMobile={isMobile}
         />
 
-        <Jumbotron />
+        <Jumbotron 
+          jumbotronHeight={jumbotronHeight}
+        />
 
         <section id="about" className="page" style={{zIndex: 1}}>
           ABOUT

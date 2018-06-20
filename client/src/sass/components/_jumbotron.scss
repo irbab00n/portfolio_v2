@@ -28,34 +28,30 @@
 @keyframes background-animation {
   0% {
     opacity: 0.0;
-    left: -30vw;
-    top: 10vh;
+    transform: translateX(-10%);
   }
 
   5% {
-    opacity: 0.7;
+    opacity: 0.5;
   }
 
   25% {
     opacity: 0.9;
   }
   50% {
-    opacity: 0.8;
-    top: 15vh;
+    opacity: 0.7;
   }
   75% {
     opacity: 0.9;
-    top: 12vh;
   }
 
   95% {
-    opacity: 0.7;
-    top: 11vh;
+    opacity: 0.5;
   }
 
   100% {
     opacity: 0.0;
-    left: 10vw;
+    transform: translateX(10%);
   }
 }
 
@@ -79,22 +75,22 @@
 
 @keyframes cloud-pulse-1 {
   0% {opacity: 0.9;}
-  20% {opacity: 0.8;}
+  20% {opacity: 0.7;}
   35% {opacity: 0.9;}
-  50% {opacity: 0.7;}
+  50% {opacity: 0.5;}
   65% {opacity: 0.9;}
-  80% {opacity: 0.8;}
+  80% {opacity: 0.7;}
   100% {opacity: 0.9;}
 }
 
 @keyframes cloud-pulse-2 {
-  0% {opacity: 0.8;}
+  0% {opacity: 0.7;}
   20% {opacity: 0.9;}
-  35% {opacity: 0.7;}
+  35% {opacity: 0.5;}
   50% {opacity: 0.9;}
   65% {opacity: 0.9;}
-  80% {opacity: 0.8;}
-  100% {opacity: 0.9;}
+  80% {opacity: 0.7;}
+  100% {opacity: 0.7;}
 }
 
 // Cloud images
@@ -128,23 +124,50 @@
 
 @media screen and (orientation: portrait) and (max-width: 1024px) {
 
+  .mountain-image { 
+    height: 50vh;
+    left: -20vw;
+    opacity: 0.1;
+    position: absolute;
+    top: 50vh;
+    transition: 0.1s;
+    width: 200vw;
+  }
+
   .jumbotron-image-full-size {
     left: -40vw;
-    top: 20vh;
+    top: 40vh;
     height: 60vh;
     width: 200vw;
   }
 
   .left-image {
-    height: 50vh;
-    left: -10vw;
+    height: 100vh;
+    left: -40vw;
+    top: 50vh;
+    width: 300vw;
+  }
+
+  .right-image {
+    height: 30vh;
+    left: -20vw;
     top: 40vh;
-    width: 200vw;
+    width: 150vw;
   }
 
 }
 
 @media screen and (orientation: landscape) and (max-width: 1024px) {
+
+  .mountain-image { 
+    height: 80vh;
+    left: -10vw;
+    opacity: 0.1;
+    position: absolute;
+    top: 20vh;
+    transition: 0.1s;
+    width: 200vw;
+  }
 
   .jumbotron-image-full-size {
     left: -10vw;
@@ -154,10 +177,17 @@
   }
 
   .left-image {
-    height: 100vh;
-    left: -20vw;
-    top: 40vh;
-    width: 100vw;
+    height: 150vh;
+    left: -30vw;
+    top: 30vh;
+    width: 200vw;
+  }
+
+  .right-image {
+    height: 80vh;
+    left: -10vw;
+    top: 20vh;
+    width: 200vw;
   }
 
 }

@@ -9,33 +9,53 @@ export default class Jumbotron extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      translatePercent: 0
+      scrollPercent: 0
     };
+    this.calculatePercent = this.calculatePercent.bind(this);
+    this.renderHorizontalTranslateImage = this.renderHorizontalTranslateImage.bind(this);
   }
 
   componentDidMount() {
-    let jumbotronHeight = document.getElementById('jumbotron').offsetHeight;
-    document.addEventListener('scroll', (function() {
-      let currentYOffset = window.pageYOffset;
-      let translatePercent = (currentYOffset / jumbotronHeight) * 100;
-      this.setState({
-        translatePercent
-      });
-    }).bind(this));
+    document.addEventListener('scroll', this.calculatePercent);
+  }
+
+  calculatePercent() {
+    let { jumbotronHeight } = this.props;
+    let currentYOffset = window.pageYOffset;
+    this.setState({
+      scrollPercent: (currentYOffset / jumbotronHeight) * 100
+    });
+  }
+
+  renderHorizontalTranslateImage(classes, image, percentDivider = 1) {
+    let { scrollPercent } = this.state;
+    let transformPercent = scrollPercent / percentDivider;
+    let style = {
+      transform: `translateX(${transformPercent}%)`
+    };
+    return (
+      <img className={classes} src={image} style={style}/>
+    );
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('scroll', this.calculatePercent);
   }
 
   render() {
-
-    const { translatePercent } = this.state;
 
     return (
 
       <section id="jumbotron" className="page">
         <div className="jumbotron-images-wrapper page">
           <img className="mountain-image" src={mountain}/>
-          <img className="right-image" src={rightImage} style={{transform: `translateX(${(translatePercent / 8) + '%'})`}}/>
+          {
+            this.renderHorizontalTranslateImage('right-image', rightImage, 8)
+          }
           <img className="jumbotron-image-full-size" src={cloudBackground}/>
-          <img className="left-image" src={leftImage} style={{transform: `translateX(${-(translatePercent / 4) + '%'})`}}/>
+          {
+            this.renderHorizontalTranslateImage('left-image', leftImage, -4)
+          }
         </div>
       </section>
 
