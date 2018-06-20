@@ -1,7 +1,7 @@
 {
-  "name": "sass-starter",
+  "name": "portfolio_v2",
   "version": "1.0.0",
-  "description": "A starter platform to build applications styled with sass",
+  "description": "A humble portfolio playground",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/irbab00n/sass-starter.git"
+    "url": "git+https://github.com/irbab00n/portfolio_v2.git"
   },
   "author": "Thomas Cosby",
   "license": "MIT",
@@ -30,6 +30,7 @@
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
     "uglifyjs-webpack-plugin": "^1.2.5",
+    "url-loader": "^1.0.1",
     "webpack": "^4.6.0",
     "webpack-cli": "^2.1.2",
     "webpack-merge": "^4.1.2"

@@ -30,25 +30,38 @@
 
 .mobile-nav-menu {
   position: absolute;
+  background-color: #007ac1;
   display: block;
   top: 0;
   right: 0;
-  opacity: 0;
+  opacity: 1.0;
   width: 100%;
   margin-top: $navigation-height;
   transition: $standard-transition;
   z-index: 2000;
   height: 0vh;
   pointer-events: none;
+
+  ul {
+    transition: $standard-transition;
+    transition-delay: 0s;
+    opacity: 0.0;
+  }
+
 }
 
 .mobile-nav-menu.is-active {
-  position: absolute;
   opacity: 1.0;
   height: 100vh;
-  background-color: #007ac1;
   overflow-y: scroll;
   pointer-events: auto;
+  
+
+  ul {
+    transition-delay: $standard-time;
+    opacity: 1.0;
+  }
+
 }
 
 // Mobile Nav Content Container
@@ -72,7 +85,7 @@
 
 
 
-@media screen and (orientation: landscape) and (max-width: 1200px) {
+@media screen and (orientation: landscape) and (max-width: 1024px) {
 
   .mobile-nav-wrapper, .mobile-nav-toggle {
     height: $navigation-height-mobile-landscape / 2;
@@ -119,7 +132,7 @@
 
 
 
-@media screen and (orientation: portrait) and (max-width: 1200px) {
+@media screen and (orientation: portrait) and (max-width: 1024px) {
 
   .mobile-nav-wrapper, .mobile-nav-toggle {
     height: $navigation-height-mobile-portrait / 2;

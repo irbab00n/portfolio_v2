@@ -1,5 +1,5 @@
 // Background Colors
-$bg-primary-color: rgba(35, 35, 35, 1.0);
+$bg-primary-color: rgba(135, 135, 135, 1.0);
 $bg-secondary-color: rgba(235, 235, 235, 1.0);
 $bg-tertiary-color: rgba(0, 122, 193, 1.0);
 
@@ -17,8 +17,10 @@ $navigation-height-mobile-landscape: 12vh;
 
 // Transitions
 $standard-time: 0.4s;
+$long-time: 0.8s;
 
 $standard-transition: $standard-time;
+$long-transition: $long-time;
 $linear-transition: $standard-time linear;
 $ease-in-transition: $standard-time ease-in;
 $ease-out-transition: $standard-time ease-out;

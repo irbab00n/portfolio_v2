@@ -1,8 +1,8 @@
-# Sass Starter-kit
+# Portfolio_v2
 
-### Welcome to my Sass Starter-kit!
+### Welcome to my second portfolio repository
 
-This kit was to provide myself a boiler-plate ready solution to beginning new projects to exercise my skills using Sass to style React components.
+This portfolio is intended to be a way for me to apply a lot of the techniques I've learned over the last few months and re-apply them to my portfolio.
 
 ---
 

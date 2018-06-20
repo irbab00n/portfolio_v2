@@ -28,6 +28,13 @@ module.exports = {
             fallback: 'style-loader',
             use: ['css-loader', 'sass-loader']
           })
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        loader: 'url-loader',
+        options: {
+          limit: '25000'
+        }
       }
     ]
   },
@@ -35,6 +42,7 @@ module.exports = {
     new ExtractTextPlugin({filename: 'style.css'})
   ],
   resolve: {
+    extensions: ['.webpack.js', '.web.js', '.js', '.json', '.jsx'],
     modules: [_modules]
   }
 }

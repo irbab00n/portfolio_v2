@@ -3,38 +3,70 @@
 .navigation {
   @include flex;
   @include align-center;
-  @include std-box-shadow;
+  background-color: rgba(225, 225, 225, 0.0);
+  box-shadow: none;
   position: fixed;
   top: 0;
   left: 0;
   height: $navigation-height;
+  transition: $ease-out-transition;
   width: 100vw;
-  background-color: $bg-secondary-color;
+  z-index: 9001;
 }
 
-.navigation-gutter {
-  height: $navigation-height * 1.2;
-  width: 100vw;
+.navigation.toggled {
+  @include std-box-shadow;
+  background-color: rgba(225, 225, 225, 1.0);
 }
 
 .navigation-logo-wrapper {
   @include flex;
   @include align-center;
   @include justify-start;
-  width: 20%;
+  @include perspective(100vh);
+  @include perspective-preserve-3d;
+  height: $navigation-height;
+  width: 20vw;
+
+  .navigation-logo-gradient {
+    background: linear-gradient(to right, rgba(0, 122, 193, 1.0) 0%, rgba(125, 125, 125, 0.1) 60%, transparent);
+    height: $navigation-height;
+    left: -30vw;
+    pointer-events: none;
+    position: fixed;
+    transition: $long-transition;
+    width: 30vw;
+    z-index: 1;
+  }
+
+}
+
+.navigation-logo-wrapper:hover {
+
+  .navigation-logo-gradient {
+    left: 0vw;
+  }
+
 }
 
 .navigation-logo {
-  background: url(https://s20.postimg.cc/fehb8hpot/logo.png) no-repeat left center; // your logo asset goes here
+  @include perspective-rotate-y(0deg);
+  background: url(./../../public/logo_full_small.png) no-repeat left center; // your logo asset goes here
   background-size: contain;
+  cursor: pointer;
+  filter: contrast(200%) drop-shadow(0vw 0.2vh 0.1vh rgba(50, 50, 50, 1.0));
   margin-left: 4vw;
   min-height: 4vh;
   width: 100%;
-  opacity: 1.0;
+  opacity: 0.9;
+  transition: $long-transition;
+  z-index: 1000;
 }
 
 .navigation-logo:hover {
-  opacity: 0.7;
+  @include perspective-rotate-y(15deg);
+  filter: contrast(300%) drop-shadow(-0.15vw 0.2vh 0.2vh rgba(0, 61, 96, 1.0));
+  opacity: 1.0;
 }
 
 .navigation-nav-wrapper {
@@ -51,22 +83,25 @@
 
 
 
-@media screen and (orientation: landscape) and (max-width: 1200px) {
+@media screen and (orientation: landscape) and (max-width: 1024px) {
 
   .navigation {
     height: $navigation-height-mobile-landscape;
   }
 
-  .navigation-gutter {
-    height: $navigation-height-mobile-landscape * 1.2;
-  }
-
   .navigation-logo-wrapper {
-    width: 40%;
+    height: $navigation-height-mobile-landscape;
+    width: 40vw;
+
+    .navigation-logo-gradient {
+      height: $navigation-height-mobile-landscape;
+      width: 40vw;
+    }
+
   }
 
   .navigation-logo {
-    min-height: $navigation-height-mobile-landscape / 2;
+    min-height: $navigation-height-mobile-landscape * 0.6;
   }
 
   .navigation-nav-wrapper {
@@ -75,18 +110,21 @@
 
 }
 
-@media screen and (orientation: portrait) and (max-width: 1200px) {
+@media screen and (orientation: portrait) and (max-width: 1024px) {
 
   .navigation {
     height: $navigation-height-mobile-portrait;
   }
 
-  .navigation-gutter {
-    height: $navigation-height-mobile-portrait * 1.2;
-  }
-
   .navigation-logo-wrapper {
-    width: 40%;
+    height: $navigation-height-mobile-portrait;
+    width: 40vw;
+
+    .navigation-logo-gradient {
+      height: $navigation-height-mobile-portrait;
+      width: 40vw;
+    }
+
   }
 
   .navigation-logo {

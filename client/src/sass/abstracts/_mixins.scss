@@ -39,6 +39,21 @@
   justify-content: flex-end;  // for everything else
 }
 
+
+// Height Mixins
+
+@mixin full-height {
+  min-height: 100vh;
+}
+
+// Width Mixins
+
+@mixin full-width {
+  min-width: 100vw;
+}
+
+
+
 // Box-Shadow Mixins
 
 @mixin std-box-shadow {
@@ -125,7 +140,33 @@ EXAMPLE USAGE OF ANIMATE & KEYFRAMES @mixins
   transition: $standard-transition;
 }
 
+// PERSPECTIVE Mixins
 
+@mixin perspective($value) {
+  -webkit-perspective: $value;
+  perspective: $value;
+}
+
+@mixin perspective-preserve-3d {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+@mixin perspective-rotate-x($value) {
+  -webkit-transform: rotateX($value);
+  transform: rotateX($value);
+}
+
+@mixin perspective-rotate-y($value) {
+  -webkit-transform: rotateY($value);
+  transform: rotateY($value);
+}
+
+@mixin translate($x: 0vw, $y: 0vh) {
+  -webkit-transform: translate($x, $y);
+  -ms-transform: translate($x, $y);
+  transform: translate($x, $y)
+}
 
 
 

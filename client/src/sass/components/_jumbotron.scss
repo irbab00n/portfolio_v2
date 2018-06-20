@@ -1,0 +1,163 @@
+#jumbotron {
+  background: linear-gradient(to top, rgba(35, 75, 50, 0.1) 0%, rgba(35, 75, 70, 0.1) 5%, rgba(200, 235, 240, 1.0) 25%, rgba(125, 200, 235, 1.0) 50%, rgba(10, 120, 180, 1.0) 100%);
+  z-index: -1000;
+}
+
+.jumbotron-images-wrapper {
+  @include flex;
+  @include flex-column;
+  @include align-center;
+  @include justify-center;
+  color: black;
+  overflow: hidden;
+  position: relative;
+}
+
+.mountain-image { 
+  height: 50vh;
+  left: -10vw;
+  opacity: 0.1;
+  position: absolute;
+  top: 50vh;
+  transition: 0.1s;
+  width: 100vw;
+}
+
+// Background cloud animation
+
+@keyframes background-animation {
+  0% {
+    opacity: 0.0;
+    left: -30vw;
+    top: 10vh;
+  }
+
+  5% {
+    opacity: 0.7;
+  }
+
+  25% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.8;
+    top: 15vh;
+  }
+  75% {
+    opacity: 0.9;
+    top: 12vh;
+  }
+
+  95% {
+    opacity: 0.7;
+    top: 11vh;
+  }
+
+  100% {
+    opacity: 0.0;
+    left: 10vw;
+  }
+}
+
+// Background cloud image
+
+.jumbotron-image-full-size {
+  animation-name: background-animation;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  background-size: contain;
+  height: 100vh;
+  opacity: 0.9;
+  position: absolute;
+  top: 10vh;
+  transition: 0.1s;
+  width: 100vw;
+}
+
+// Cloud pulsing animations
+
+@keyframes cloud-pulse-1 {
+  0% {opacity: 0.9;}
+  20% {opacity: 0.8;}
+  35% {opacity: 0.9;}
+  50% {opacity: 0.7;}
+  65% {opacity: 0.9;}
+  80% {opacity: 0.8;}
+  100% {opacity: 0.9;}
+}
+
+@keyframes cloud-pulse-2 {
+  0% {opacity: 0.8;}
+  20% {opacity: 0.9;}
+  35% {opacity: 0.7;}
+  50% {opacity: 0.9;}
+  65% {opacity: 0.9;}
+  80% {opacity: 0.8;}
+  100% {opacity: 0.9;}
+}
+
+// Cloud images
+
+.left-image {
+  animation-name: cloud-pulse-1;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  height: 100vh;
+  left: -10vw;
+  position: absolute;
+  top: 40vh;
+  transition: 0.1s;
+  width: 150vw;
+}
+
+.right-image {
+  animation-name: cloud-pulse-2;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  height: 70vh;
+  left: 10vw;
+  opacity: 0.7;
+  position: absolute;
+  top: 30vh;
+  transition: 0.1s;
+  width: 120vw;
+}
+
+@media screen and (orientation: portrait) and (max-width: 1024px) {
+
+  .jumbotron-image-full-size {
+    left: -40vw;
+    top: 20vh;
+    height: 60vh;
+    width: 200vw;
+  }
+
+  .left-image {
+    height: 50vh;
+    left: -10vw;
+    top: 40vh;
+    width: 200vw;
+  }
+
+}
+
+@media screen and (orientation: landscape) and (max-width: 1024px) {
+
+  .jumbotron-image-full-size {
+    left: -10vw;
+    top: 10vh;
+    height: 100vh;
+    width: 150vw;
+  }
+
+  .left-image {
+    height: 100vh;
+    left: -20vw;
+    top: 40vh;
+    width: 100vw;
+  }
+
+}
