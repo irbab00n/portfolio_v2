@@ -36,7 +36,7 @@
     position: fixed;
     transition: $long-transition;
     width: 30vw;
-    z-index: 1;
+    z-index: 9001;
   }
 
 }
@@ -60,7 +60,7 @@
   width: 100%;
   opacity: 0.9;
   transition: $long-transition;
-  z-index: 1000;
+  z-index: 9001;
 }
 
 .navigation-logo:hover {

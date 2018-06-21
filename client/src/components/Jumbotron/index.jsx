@@ -9,14 +9,17 @@ export default class Jumbotron extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isPortrait: false,
       scrollPercent: 0
     };
     this.calculatePercent = this.calculatePercent.bind(this);
     this.renderHorizontalTranslateImage = this.renderHorizontalTranslateImage.bind(this);
+    this.updatePortraitFlag = this.updatePortraitFlag.bind(this);
   }
 
   componentDidMount() {
     document.addEventListener('scroll', this.calculatePercent);
+    window.addEventListener('orientationchange', this.updatePortraitFlag);
   }
 
   calculatePercent() {
@@ -38,8 +41,16 @@ export default class Jumbotron extends React.Component {
     );
   }
 
+  updatePortraitFlag() {
+    console.log('orientation changed');
+    this.setState({
+      isPortrait: window.matchMedia("(orientation: portrait)").matches
+    });
+  }
+
   componentWillUnmount() {
     document.removeEventListener('scroll', this.calculatePercent);
+    window.removeEventListener('orientationchange', this.updatePortraitFlag);
   }
 
   render() {
@@ -50,11 +61,11 @@ export default class Jumbotron extends React.Component {
         <div className="jumbotron-images-wrapper page">
           <img className="mountain-image" src={mountain}/>
           {
-            this.renderHorizontalTranslateImage('right-image', rightImage, 8)
+            this.renderHorizontalTranslateImage('right-image', rightImage, 7)
           }
           <img className="jumbotron-image-full-size" src={cloudBackground}/>
           {
-            this.renderHorizontalTranslateImage('left-image', leftImage, -4)
+            this.renderHorizontalTranslateImage('left-image', leftImage, 4)
           }
         </div>
       </section>

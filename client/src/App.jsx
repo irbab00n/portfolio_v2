@@ -8,17 +8,16 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      jumbotronHeight: 0
+      isPortrait: false,
+      jumbotronHeight: 0,
     };
     this.navScrollToggleHandler = this.navScrollToggleHandler.bind(this);
+    this.updateJumbotronHeight = this.updateJumbotronHeight.bind(this);
   }
 
   componentDidMount() {
-    let sections = document.getElementsByTagName('section');
     document.addEventListener('scroll', this.navScrollToggleHandler);
-    this.setState({
-      jumbotronHeight: sections[0].offsetHeight
-    });
+    this.updateJumbotronHeight();
   }
 
   navScrollToggleHandler() {
@@ -41,13 +40,24 @@ export default class App extends React.Component {
     }
   }
 
+  updateJumbotronHeight() {
+    let jumbotronHeight = document.getElementById('jumbotron').offsetHeight;
+    this.setState({
+      jumbotronHeight
+    });
+  }
+
+
+  componentWillUnmount() {
+    document.removeEventListener('scroll', this.navScrollToggleHandler);
+  }
 
 
   render() {
 
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-    const { jumbotronHeight } = this.state;
+    const { isPortrait, jumbotronHeight } = this.state;
 
     return (
 
@@ -59,6 +69,7 @@ export default class App extends React.Component {
 
         <Jumbotron 
           jumbotronHeight={jumbotronHeight}
+          isPortrait={isPortrait}
         />
 
         <section id="about" className="page" style={{zIndex: 1}}>

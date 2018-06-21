@@ -20,6 +20,7 @@ export default class MobileNav extends React.Component {
     let mobileNavToggle = document.getElementsByClassName('mobile-nav-toggle')[0];
     // get the mobile nav menu to toggle active class
     let mobileNavMenu = document.getElementsByClassName('mobile-nav-menu')[0];
+    let mobileNavMenuFade = document.getElementsByClassName('mobile-nav-menu-fade')[0];
 
     // save the current Y offset of the page
     let currentOffset = window.pageYOffset;
@@ -28,6 +29,7 @@ export default class MobileNav extends React.Component {
     navContainer.classList.contains('toggled') ? null : navContainer.classList.toggle('toggled'); // Toggles the class that toggles on the white background for the nav bar
     mobileNavToggle.classList.toggle('is-active'); // Triggers the hamburger -> X transition
     mobileNavMenu.classList.toggle('is-active'); // Toggles the color and size animations for the menu
+    mobileNavMenuFade.classList.toggle('is-active'); // Toggles the color and size animations for the menu
 
     // lock the scroll on the background
     body.classList.toggle('no-scroll'); // Prevents background content from being moved while menu is active
@@ -53,7 +55,7 @@ export default class MobileNav extends React.Component {
       <div className="mobile-nav-wrapper">
         <a className="mobile-nav-toggle"
           onClick={isMobile ? (e) => {e.preventDefault()} : (e) => this.handleClick(e)}
-          onTouchEnd={(e) => this.handleClick(e)}
+          onTouchStart={(e) => this.handleClick(e)}
         >
           <span></span>
         </a>

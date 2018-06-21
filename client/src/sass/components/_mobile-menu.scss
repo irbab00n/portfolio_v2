@@ -1,5 +1,13 @@
 // Uniform sizing for both the Mobile Nav Wrapper and Mobile Nav Toggle
 
+.mobile-nav-wrapper {
+  pointer-events: none;
+}
+
+.mobile-nav-toggle {
+  pointer-events: auto;
+}
+
 .mobile-nav-wrapper, .mobile-nav-toggle {
   @include justify-end;
   cursor: pointer;
@@ -51,7 +59,6 @@
 }
 
 .mobile-nav-menu.is-active {
-  opacity: 1.0;
   height: 100vh;
   overflow-y: scroll;
   pointer-events: auto;
@@ -62,6 +69,17 @@
     opacity: 1.0;
   }
 
+}
+
+.mobile-nav-menu-fade {
+  position: absolute;
+  background-color: rgba(25, 25, 25, 0.2);
+  display: block;
+  top: 100vh;
+  right: 0;
+  opacity: 1.0;
+  width: 100vw;
+  pointer-events: none;
 }
 
 // Mobile Nav Content Container
@@ -122,6 +140,15 @@
     margin-top: $navigation-height-mobile-landscape;
   }
 
+  .mobile-nav-menu-fade {
+    height: 100vh - $navigation-height-mobile-landscape; 
+  }
+
+  .mobile-nav-menu-fade.is-active {
+    top: $navigation-height-mobile-landscape;
+    background-color: rgba(25, 25, 25, 1.0);
+  }
+
   .mobile-nav-content li {
     font-size: 4.5vh;
   }
@@ -167,6 +194,15 @@
 
   .mobile-nav-menu {
     margin-top: $navigation-height-mobile-portrait;
+  }
+
+  .mobile-nav-menu-fade {
+    height: 100vh - $navigation-height-mobile-portrait; 
+  }
+
+  .mobile-nav-menu-fade.is-active {
+    top: $navigation-height-mobile-landscape;
+    background-color: rgba(25, 25, 25, 1.0);
   }
 
   .mobile-nav-content li {

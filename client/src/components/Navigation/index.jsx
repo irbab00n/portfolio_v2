@@ -36,6 +36,8 @@ export default class Navigation extends React.Component {
 
       <div className="navigation">
 
+        <div className="mobile-nav-menu-fade" />
+
         <Logo />
 
         <DesktopNav />
