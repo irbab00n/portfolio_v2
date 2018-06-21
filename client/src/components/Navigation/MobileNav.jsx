@@ -7,11 +7,10 @@ export default class MobileNav extends React.Component {
       offsetPosition: null
     };
     this.handleClick = this.handleClick.bind(this);
+    this.renderToggle = this.renderToggle.bind(this);
   }
 
   handleClick(e) {
-    e.preventDefault();
-
     // get the HTML to prevent scroll
     let body = document.getElementsByTagName('body')[0];
     // get the navigation container to toggle on the background
@@ -46,6 +45,30 @@ export default class MobileNav extends React.Component {
     }
   }
 
+  renderToggle(isMobile) {
+
+    if (isMobile) {
+      return (
+        <a 
+          className="mobile-nav-toggle"
+          onTouchStart={(e) => this.handleClick(e)}
+        >
+          <span></span>
+        </a>
+      );
+    } else {
+      return (
+        <a 
+          className="mobile-nav-toggle"
+          onClick={(e) => this.handleClick(e)}
+        >
+          <span></span>
+        </a>
+      );
+    }
+
+  }
+
   render() {
 
     const { isMobile } = this.props;
@@ -53,12 +76,9 @@ export default class MobileNav extends React.Component {
     return (
 
       <div className="mobile-nav-wrapper">
-        <a className="mobile-nav-toggle"
-          onClick={isMobile ? (e) => {e.preventDefault()} : (e) => this.handleClick(e)}
-          onTouchStart={(e) => this.handleClick(e)}
-        >
-          <span></span>
-        </a>
+        {
+          this.renderToggle(isMobile)
+        }
       </div>
 
     );

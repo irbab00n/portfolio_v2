@@ -42,7 +42,6 @@ export default class Jumbotron extends React.Component {
   }
 
   updatePortraitFlag() {
-    console.log('orientation changed');
     this.setState({
       isPortrait: window.matchMedia("(orientation: portrait)").matches
     });
