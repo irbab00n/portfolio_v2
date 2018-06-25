@@ -1,5 +1,5 @@
 #jumbotron {
-  background: linear-gradient(to top, rgba(35, 75, 50, 0.1) 0%, rgba(35, 75, 70, 0.1) 5%, rgba(200, 235, 240, 1.0) 25%, rgba(125, 200, 235, 1.0) 50%, rgba(10, 120, 180, 1.0) 100%);
+  background: linear-gradient(to top, rgba(35, 75, 50, 0.1) 0%, rgba(35, 75, 70, 0.1) 5%, rgba(200, 235, 240, 1.0) 20%, rgba(125, 200, 235, 1.0) 50%, rgba(10, 120, 180, 0.9) 100%);
   z-index: -1000;
 }
 
@@ -15,12 +15,44 @@
 
 .mountain-image { 
   height: 80vh;
-  left: -10vw;
-  opacity: 0.1;
+  opacity: 0.5;
   position: absolute;
   top: 20vh;
   transition: 0.1s;
   width: 100vw;
+}
+
+.trees-image {
+  height: 50vh;
+  opacity: 0.5;
+  position: absolute;
+  top: 70vh;
+  transition: 0.1s;
+  width: 100vw;
+}
+
+.bird-image {
+  height: 1vh;
+  width: 1vh;
+  transform: translateX(-20%) translateY(20%)
+}
+
+.bird-image2 {
+  height: 1vh;
+  width: 1vh;
+  transform: translateX(-22%) translateY(20%)
+}
+
+.bird-image3 {
+  height: 1vh;
+  width: 1vh;
+  transform: translateX(-24%) translateY(20%)
+}
+
+.bird-image4 {
+  height: 1vh;
+  width: 1vh;
+  transform: translateX(-26%) translateY(20%)
 }
 
 // Background cloud animation
@@ -32,21 +64,21 @@
   }
 
   5% {
-    opacity: 0.5;
+    opacity: 0.6;
   }
 
   25% {
-    opacity: 0.9;
-  }
-  50% {
     opacity: 0.7;
   }
+  50% {
+    opacity: 0.8;
+  }
   75% {
-    opacity: 0.9;
+    opacity: 0.7;
   }
 
   95% {
-    opacity: 0.5;
+    opacity: 0.6;
   }
 
   100% {
@@ -63,10 +95,10 @@
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   background-size: contain;
-  height: 100vh;
+  height: 80vh;
   opacity: 0.9;
   position: absolute;
-  top: 10vh;
+  top: 0vh;
   transition: 0.1s;
   width: 100vw;
 }
@@ -86,11 +118,11 @@
 // Cloud images
 
 .left-image {
-  height: 100vh;
-  left: -40vw;
+  height: 70vh;
   position: absolute;
-  top: 40vh;
-  width: 150vw;
+  opacity: 1;
+  // transition: 0.1s;
+  width: 100vw;
 }
 
 .right-image {
@@ -98,12 +130,11 @@
   animation-duration: 20s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
-  height: 70vh;
-  left: 10vw;
+  height: 60vh;
   opacity: 0.7;
   position: absolute;
-  top: 30vh;
-  width: 120vw;
+  // transition: 0.1s;
+  width: 100vw;
 }
 
 @media screen and (orientation: portrait) and (max-width: 1024px) {
@@ -111,10 +142,7 @@
   .mountain-image { 
     height: 70vh;
     left: -50vw;
-    opacity: 0.1;
-    position: absolute;
     top: 30vh;
-    transition: 0.1s;
     width: 300vw;
   }
 
@@ -128,14 +156,12 @@
   .left-image {
     height: 100vh;
     left: -150vw;
-    top: 50vh;
     width: 300vw;
   }
 
   .right-image {
     height: 40vh;
     left: -10vw;
-    top: 50vh;
     width: 150vw;
   }
 
@@ -146,10 +172,13 @@
   .mountain-image { 
     height: 80vh;
     left: -10vw;
-    opacity: 0.1;
-    position: absolute;
     top: 20vh;
-    transition: 0.1s;
+    width: 200vw;
+  }
+
+  .trees-image {
+    height: 80vh;
+    top: 40vh;
     width: 200vw;
   }
 
@@ -162,15 +191,11 @@
 
   .left-image {
     height: 150vh;
-    left: -30vw;
-    top: 30vh;
     width: 200vw;
   }
 
   .right-image {
     height: 80vh;
-    left: -100vw;
-    top: 20vh;
     width: 200vw;
   }
 
