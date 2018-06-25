@@ -2,7 +2,6 @@ import React from 'react';
 
 import mountain from '../../../public/mountain-png-2.png';
 import trees from '../../../public/trees.png';
-import bird from '../../../public/bird.gif';
 import cloudBackground from '../../../public/cloud_large_raw.png';
 import leftImage from '../../../public/cloud_left_transition_medium.png';
 import rightImage from '../../../public/cloud_right_transition_large.png';
