@@ -21,11 +21,9 @@ export default class App extends React.Component {
   }
 
   navScrollToggleHandler() {
-    // get the current y offset
     let { jumbotronHeight } = this.state;
     let currentYOffset = window.pageYOffset;
-
-    // get the navigation component
+    
     let nav = document.getElementsByClassName('navigation')[0];
     let mobileNavToggle = document.getElementsByClassName('mobile-nav-toggle')[0];
 
@@ -54,31 +52,22 @@ export default class App extends React.Component {
 
 
   render() {
-
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
     const { isPortrait, jumbotronHeight } = this.state;
-
     return (
-
       <div className="content-body">
-
         <Navigation 
           isMobile={isMobile}
         />
-
         <Jumbotron 
           jumbotronHeight={jumbotronHeight}
+          isMobile={isMobile}
           isPortrait={isPortrait}
         />
-
         <section id="about" className="page" style={{zIndex: 1}}>
           ABOUT
         </section>
-
       </div>
-
     );
-
   }
 }

@@ -40,13 +40,12 @@ export default class MobileNav extends React.Component {
       // clear the offsetPosition from the state
       this.setState({offsetPosition: null});
     } else {
-      // set the offsetPosition to the currentOffset
+      // set the offsetPosition to tshe currentOffset
       this.setState({offsetPosition: currentOffset});
     }
   }
 
   renderToggle(isMobile) {
-
     if (isMobile) {
       return (
         <a 
@@ -66,22 +65,16 @@ export default class MobileNav extends React.Component {
         </a>
       );
     }
-
   }
 
   render() {
-
     const { isMobile } = this.props;
-
     return (
-
       <div className="mobile-nav-wrapper">
         {
           this.renderToggle(isMobile)
         }
       </div>
-
     );
-
   }
 }
