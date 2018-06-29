@@ -168,8 +168,17 @@ EXAMPLE USAGE OF ANIMATE & KEYFRAMES @mixins
   transform: translate($x, $y)
 }
 
-
-
+/*
+  Image Rotation Mixins
+*/
+@mixin flipImage() {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: “FlipH”;
+}
 
 
 

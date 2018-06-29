@@ -3,8 +3,8 @@ import React from 'react';
 import mountain from '../../../public/mountain-png-2.png';
 import trees from '../../../public/trees.png';
 import cloudBackground from '../../../public/cloud_large_raw.png';
-import leftImage from '../../../public/cloud_left_transition_medium.png';
-import rightImage from '../../../public/cloud_right_transition_large.png';
+import leftImage from '../../../public/cloud_left_transition_small.png';
+import rightImage from '../../../public/cloud_right_transition_small.png';
 
 export default class Jumbotron extends React.Component {
   constructor(props) {
@@ -15,14 +15,21 @@ export default class Jumbotron extends React.Component {
     };
     this.calculatePercent = this.calculatePercent.bind(this);
     this.renderHorizontalTranslateImage = this.renderHorizontalTranslateImage.bind(this);
-    this.updatePortraitFlag = this.updatePortraitFlag.bind(this);
   }
 
   componentDidMount() {
     document.addEventListener('scroll', this.calculatePercent);
-    window.addEventListener('orientationchange', this.updatePortraitFlag);
   }
 
+  /* calculatePercent Info
+    Params
+      None
+
+    Purpose
+      Use the height of the jumbotron and the current Y offset of the page to calculate the
+      percentage the user has scrolled down the jumbotron.  This provides a value to use in a transform
+      to animate the images
+  */
   calculatePercent() {
     let { jumbotronHeight } = this.props;
     let currentYOffset = window.pageYOffset;
@@ -31,20 +38,17 @@ export default class Jumbotron extends React.Component {
     });
   }
 
-  /**
+  /* renderHorizontalTranslateImage Info
     Params
-
       - image     <String>: Imported at the top of the file, passed in via variable reference inside interpolation
-      - classes   <String/Array>: String shoudl be  consistant with normal className rules; If array, it will concat as a string with spaces
+      - classes   <String/Array>: String shoudl be consistant with normal className rules; If array, it will concat as a string with spaces
       - ratio     <Number>: Divides the current scroll percent; provides a smaller percentage curve for slower animations
       - xAdjust   <Number>: Number represents a percentage of transform.  Negative translates left, positive translates right
       - yAdjust   <Number>: Number represents a percentage of transform.  Negative translates up, positive translates down
 
     Purpose
-
       Construct an 'img' element, apply the classes, attach the source, and a calculated style object
       The calculated style object has both a transform X and Y translate using the passed in or default values
-
   */
   renderHorizontalTranslateImage(image, classes, ratio = 1, xAdjust = 0, yAdjust = 0) {
 
@@ -62,15 +66,8 @@ export default class Jumbotron extends React.Component {
     );
   }
 
-  updatePortraitFlag() {
-    this.setState({
-      isPortrait: window.matchMedia("(orientation: portrait)").matches
-    });
-  }
-
   componentWillUnmount() {
     document.removeEventListener('scroll', this.calculatePercent);
-    window.removeEventListener('orientationchange', this.updatePortraitFlag);
   }
 
   render() {

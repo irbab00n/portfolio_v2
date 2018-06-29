@@ -23,8 +23,9 @@
 }
 
 .trees-image {
+  @include flipImage;
   height: 50vh;
-  opacity: 0.5;
+  opacity: 0.7;
   position: absolute;
   top: 70vh;
   transition: 0.1s;
@@ -129,13 +130,18 @@
 @media screen and (orientation: portrait) and (max-width: 1024px) {
 
   .mountain-image { 
-    height: 70vh;
-    left: -50vw;
+    height: 80vh;
+    left: -90vw;
     top: 20vh;
     width: 300vw;
   }
 
   .trees-image {
+    height: 30vh;
+    left: 0vw;
+    opacity: 0.7;
+    top: 80vh;
+    width: 140vw;
   }
 
   .jumbotron-image-full-size {
@@ -146,8 +152,8 @@
   }
 
   .left-image {
-    height: 100vh;
-    width: 300vw;
+    height: 40vh;
+    width: 150vw;
   }
 
   .right-image {
@@ -166,8 +172,8 @@
   }
 
   .trees-image {
-    height: 40vh;
-    top: 70vh;
+    height: 45vh;
+    top: 65vh;
     width: 100vw;
   }
 

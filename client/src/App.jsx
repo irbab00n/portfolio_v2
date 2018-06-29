@@ -17,6 +17,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     document.addEventListener('scroll', this.navScrollToggleHandler);
+    window.addEventListener('orientationchange', this.updateJumbotronHeight);
     this.updateJumbotronHeight();
   }
 
@@ -48,6 +49,7 @@ export default class App extends React.Component {
 
   componentWillUnmount() {
     document.removeEventListener('scroll', this.navScrollToggleHandler);
+    window.removeEventListener('orientationchange', this.updateJumbotronHeight);
   }
 
 
