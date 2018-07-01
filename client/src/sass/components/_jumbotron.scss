@@ -1,5 +1,7 @@
 #jumbotron {
   background: linear-gradient(to top, rgba(35, 75, 50, 0.1) 0%, rgba(35, 75, 70, 0.1) 5%, rgba(200, 235, 240, 1.0) 20%, rgba(125, 200, 235, 1.0) 50%, rgba(10, 120, 180, 0.9) 100%);
+  overflow: hidden;  
+  width: 100%;  
   z-index: -1000;
 }
 
@@ -19,7 +21,7 @@
   position: absolute;
   top: 20vh;
   transition: 0.1s;
-  width: 100vw;
+  width: 100%;
 }
 
 .trees-image {
@@ -29,7 +31,7 @@
   position: absolute;
   top: 70vh;
   transition: 0.1s;
-  width: 100vw;
+  width: 100%;
 }
 
 // Background cloud animation
@@ -111,7 +113,7 @@
   height: 70vh;
   position: absolute;
   opacity: 1;
-  // transition: 0.1s;
+  transition: 0.1s;
   width: 100vw;
 }
 
@@ -123,7 +125,7 @@
   height: 60vh;
   opacity: 0.7;
   position: absolute;
-  // transition: 0.1s;
+  transition: 0.1s;
   width: 100vw;
 }
 
