@@ -1,6 +1,7 @@
 import React from 'react';
 import Navigation from './components/Navigation';
 import Jumbotron from './components/Jumbotron';
+import Features from './components/Features';
 
 import './sass/main.scss';
 
@@ -46,12 +47,10 @@ export default class App extends React.Component {
     });
   }
 
-
   componentWillUnmount() {
     document.removeEventListener('scroll', this.navScrollToggleHandler);
     window.removeEventListener('orientationchange', this.updateJumbotronHeight);
   }
-
 
   render() {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -66,9 +65,7 @@ export default class App extends React.Component {
           isMobile={isMobile}
           isPortrait={isPortrait}
         />
-        <section id="about" className="page" style={{zIndex: 1}}>
-          ABOUT
-        </section>
+        <Features />
       </div>
     );
   }

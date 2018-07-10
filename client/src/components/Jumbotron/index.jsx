@@ -75,7 +75,10 @@ export default class Jumbotron extends React.Component {
     const { isMobile, isPortait } = this.props;
 
     return (
-
+      /*
+        If we are intending to make any of the images here unselectable,
+        we will have change the element type to a <div> that uses the images as a background
+      */
       <section id="jumbotron" className="page">
         <div className="jumbotron-images-wrapper page">
           <img className="mountain-image" src={mountain}/>

@@ -6,12 +6,8 @@ export default class Features extends React.Component {
   }
 
   render() {
-
     return (
-
       <section id="about" className="page" style={{zIndex: 1}}>ABOUT</section>
-
     );
-
   }
-}s
+}
