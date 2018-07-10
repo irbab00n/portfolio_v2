@@ -41,7 +41,7 @@ export default class Jumbotron extends React.Component {
   /* renderHorizontalTranslateImage Info
     Params
       - image     <String>: Imported at the top of the file, passed in via variable reference inside interpolation
-      - classes   <String/Array>: String shoudl be consistant with normal className rules; If array, it will concat as a string with spaces
+      - classes   <String/Array>: String should be consistant with normal className rules; If array, it will concat as a string with spaces
       - ratio     <Number>: Divides the current scroll percent; provides a smaller percentage curve for slower animations
       - xAdjust   <Number>: Number represents a percentage of transform.  Negative translates left, positive translates right
       - yAdjust   <Number>: Number represents a percentage of transform.  Negative translates up, positive translates down
