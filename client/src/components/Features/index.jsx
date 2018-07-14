@@ -9,20 +9,14 @@ export default class Features extends React.Component {
     return (
       <section id="about">
         <div id="about-content">
-          <div className="container-test about-full-ch about-half-cw green-bg-test">
-            Half Height, Full width -- Box 1
+          <div className="about-container about-half-ch about-full-cw blue-bg-test">
+            Carousel of Skills
           </div>
-          <div className="container-test about-half-ch about-half-cw blue-bg-test">
-            Half Height, Half width -- Box 2a
+          <div className="about-container about-full-ch about-3quart-cw green-bg-test">
+            Left
           </div>
-          <div className="container-test about-half-ch about-half-cw gray-bg-test">
-            Half Height, Half width -- Box 2b
-          </div>
-          <div className="container-test about-half-ch about-half-cw blue-bg-test">
-            Half Height, Half width -- Box 2c
-          </div>
-          <div className="container-test about-full-ch about-full-cw gray-bg-test">
-            Full Height, Full width -- Box 3
+          <div className="about-container about-full-ch about-quarter-cw gray-bg-test">
+            Right
           </div>
         </div>
       </section>

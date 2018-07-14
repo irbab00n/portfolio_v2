@@ -11,22 +11,31 @@ $about-content-width: 100%;
 #about-content {
   @include full-width;
   @include flex;
-  @include align-center;
-  @include justify-center;
   @include flex-wrap-wrap;
   background-color: $bg-primary-color;
   min-height: 100vh - $navigation-height;
   margin-top: $navigation-height;
 }
 
-.container-test {
+.about-container {
   @include flex;
+  @include align-center;
+  @include justify-center;
+}
+
+.about-container-col {
+  @include flex;
+  @include flex-column;
   @include align-center;
   @include justify-center;
 }
 
 .about-full-ch {
   height: $about-content-height;
+}
+
+.about-3quart-ch {
+  height: ($about-content-height / 4) * 3;
 }
 
 .about-half-ch {
@@ -39,6 +48,10 @@ $about-content-width: 100%;
 
 .about-full-cw {
   width: $about-content-width;
+}
+
+.about-3quart-cw {
+  width: ($about-content-width / 4) * 3;
 }
 
 .about-half-cw {
