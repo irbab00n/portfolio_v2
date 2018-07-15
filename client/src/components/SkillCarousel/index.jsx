@@ -9,24 +9,28 @@ export default class SkillCarousel extends React.Component {
     this.state = {
       index: 0
     };
+    this.calculateXTranslate = this.calculateXTranslate.bind(this);
     this.updateCarouselIndex = this.updateCarouselIndex.bind(this);
   }
-
+  
+  calculateXTranslate(index) {
+    // divide 100 by 3, then multiply it by the index
+    let cardSize = 100 / 3;
+    let transformPercent = cardSize * index;
+    return {transform: `translateX(${-transformPercent}%)`};
+  }
+  
   updateCarouselIndex(update) {
     let { index } = this.state;
     switch (update) {
       case 'inc':
-        console.log('increase index!');
         if (index === 3) {
-          console.log('index is too high, doing nothing');
           return;
         }
         this.setState({index: index + 1});
         break;
       case 'dec':
-        console.log('decrease index!');
         if (index === 0) {
-          console.log('index is at the lowest possible, doing nothing');
           return;
         }
         this.setState({index: index - 1});
@@ -37,6 +41,7 @@ export default class SkillCarousel extends React.Component {
     }
   }
 
+
   render() {
 
     let { index } = this.state;
@@ -46,10 +51,13 @@ export default class SkillCarousel extends React.Component {
     return (
       <div className="about-container about-half-ch about-full-cw skill-carousel">
         <div className="about-half-ch about-full-cw skill-control-box">
-          <div className="control" onMouseEnter={() => this.updateCarouselIndex('dec')}/>
-          <div className="control" onMouseEnter={() => this.updateCarouselIndex('inc')}/>
+          <div className="control" onClick={() => this.updateCarouselIndex('dec')}/>
+          <div className="control" onClick={() => this.updateCarouselIndex('inc')}/>
         </div>
-        <div className="about-container about-half-ch about-full-cw skill-slider">
+        <div 
+          className="about-container about-half-ch about-full-cw skill-slider"
+          style={this.calculateXTranslate(index)}
+        >
           {
             skills.map((skill, index) => {
               return (
