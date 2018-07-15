@@ -20,8 +20,6 @@ export default class SkillCarousel extends React.Component {
       Uses the index as a multiplier for how many card-sized sections to translate the slider by
       index = 3 => transform = 100%
       index = 1 => transform = 33.3333%
-    Note:
-      This is not dynamic, it does not scale with the number of skills in the skills array
   */
   calculateXTranslate(index) {
     let cardSize = 100 / 3;
@@ -39,7 +37,7 @@ export default class SkillCarousel extends React.Component {
     let { index } = this.state;
     switch (update) {
       case 'inc':
-        if (index === 3) {
+        if (index === skills.length - 3) {
           return;
         }
         this.setState({index: index + 1});
@@ -64,8 +62,8 @@ export default class SkillCarousel extends React.Component {
     return (
       <div className="about-container about-half-ch about-full-cw skill-carousel">
         <div className="about-half-ch about-full-cw skill-control-box">
-          <div className="control" onClick={() => this.updateCarouselIndex('dec')}/>
-          <div className="control" onClick={() => this.updateCarouselIndex('inc')}/>
+          <div className="control control-left no-select" onClick={() => this.updateCarouselIndex('dec')}>❮</div>
+          <div className="control control-right no-select" onClick={() => this.updateCarouselIndex('inc')}>❯</div>
         </div>
         <div 
           className="about-container about-half-ch about-full-cw skill-slider"
