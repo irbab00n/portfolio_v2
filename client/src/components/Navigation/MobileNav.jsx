@@ -10,9 +10,9 @@ export default class MobileNav extends React.Component {
     this.renderToggle = this.renderToggle.bind(this);
   }
 
-  handleClick(e) {
+  handleClick() {
     // get the HTML to prevent scroll
-    let body = document.getElementsByTagName('body')[0];
+    let html = document.getElementsByTagName('html')[0];
     // get the navigation container to toggle on the background
     let navContainer = document.getElementsByClassName('navigation')[0];
     // get the mobile nav toggle button to toggle active class
@@ -31,7 +31,7 @@ export default class MobileNav extends React.Component {
     mobileNavMenuFade.classList.toggle('is-active'); // Toggles the color and size animations for the menu
 
     // lock the scroll on the background
-    body.classList.toggle('no-scroll'); // Prevents background content from being moved while menu is active
+    html.classList.toggle('no-scroll'); // Prevents background content from being moved while menu is active
 
     // if we have an offsetPosition stored in the state
     if (this.state.offsetPosition !== null) {

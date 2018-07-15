@@ -1,0 +1,70 @@
+$about-content-height: 100vh - $navigation-height;
+$about-content-width: 100%;
+
+#about {
+  @include flex;
+  @include align-center;
+  @include justify-center;
+  z-index: 1;
+}
+
+#about-content {
+  @include full-width;
+  @include flex;
+  @include flex-wrap-wrap;
+  background-color: $bg-primary-color;
+  min-height: 100vh - $navigation-height;
+}
+
+.about-container {
+  @include flex;
+}
+
+.about-container-col {
+  @include flex;
+  @include flex-column;
+}
+
+.about-full-ch {
+  height: $about-content-height;
+}
+
+.about-3quart-ch {
+  height: ($about-content-height / 4) * 3;
+}
+
+.about-half-ch {
+  height: $about-content-height / 2;
+}
+
+.about-quarter-ch {
+  height: $about-content-height / 4;
+}
+
+.about-full-cw {
+  width: $about-content-width;
+}
+
+.about-3quart-cw {
+  width: ($about-content-width / 4) * 3;
+}
+
+.about-half-cw {
+  width: $about-content-width / 2;
+}
+
+.about-quarter-cw {
+  width: $about-content-width / 4;
+}
+
+.gray-bg-test {
+  background-color: rgba(37, 37, 37, 0.5);
+}
+
+.blue-bg-test {
+  background-color: rgba(53, 19, 187, 0.5);
+}
+
+.green-bg-test {
+  background-color: rgba(35, 180, 60, 0.5);
+}

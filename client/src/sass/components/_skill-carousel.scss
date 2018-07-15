@@ -1,0 +1,85 @@
+.skill-carousel {
+  background-color: rgba(135, 135, 135, 1.0);
+  overflow-x: hidden;
+}
+
+.skill-slider {
+  transition: $standard-transition;
+}
+
+.skill-card {
+  @include flex;
+  @include flex-column;
+  @include align-center;
+  justify-content: space-evenly;
+  height: 100%;
+  transition: $standard-transition;
+  min-width: (100%) / 3;
+
+  &:hover {
+    background-color: rgba(0, 122, 193, 0.6);
+
+    .skill-card-image {
+      height: 32%;
+    }
+
+  }
+}
+
+.skill-card-title {
+  margin: 0;
+}
+
+.skill-card-image {
+  height: 30%;
+  margin: 2% 0;
+  transition: $standard-transition;
+  -webkit-filter: drop-shadow(5px 5px 5px rgba(50, 50, 50, 0.8));
+  filter: drop-shadow(5px 5px 5px rgba(50, 50, 50, 0.8));
+}
+
+.skill-card-description {
+  @include flex;
+  @include flex-column;
+  @include align-center;
+}
+
+/* 
+
+  Skill Carousel control box styles
+
+*/
+
+.skill-control-box {
+  @include flex;
+  justify-content: space-between;
+  pointer-events: none;
+  position: absolute;
+}
+
+.control {
+  @include flex;
+  @include align-center;
+  @include justify-center;
+  cursor: pointer;
+  color: rgba(205, 205, 205, 0.8);
+  font-size: 5vh;
+  height: 100%;
+  opacity: 0.2;
+  pointer-events: auto;
+  transition: $standard-transition;
+  width: 10%;
+  z-index: 1;
+
+  &:hover {
+    opacity: 1.0;
+  }
+}
+
+.control-right {
+  background: linear-gradient(to left, rgba(75, 75, 75, 0.5) 0%, rgba(75, 75, 75, 0.0) 100%);
+}
+
+.control-left {
+  background: linear-gradient(to right, rgba(75, 75, 75, 0.5) 0%, rgba(75, 75, 75, 0.0) 100%);
+}
