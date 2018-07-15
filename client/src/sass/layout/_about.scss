@@ -14,20 +14,15 @@ $about-content-width: 100%;
   @include flex-wrap-wrap;
   background-color: $bg-primary-color;
   min-height: 100vh - $navigation-height;
-  margin-top: $navigation-height;
 }
 
 .about-container {
   @include flex;
-  @include align-center;
-  @include justify-center;
 }
 
 .about-container-col {
   @include flex;
   @include flex-column;
-  @include align-center;
-  @include justify-center;
 }
 
 .about-full-ch {

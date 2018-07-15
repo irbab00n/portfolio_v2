@@ -33,7 +33,7 @@ export default class App extends React.Component {
       return;
     }
 
-    if (currentYOffset >= jumbotronHeight - 1) {
+    if (currentYOffset >= jumbotronHeight - nav.offsetHeight) {
       nav.classList.contains('toggled') ? null : nav.classList.toggle('toggled');
     } else {
       nav.classList.contains('toggled') ? nav.classList.toggle('toggled') : null;

@@ -1,0 +1,41 @@
+.skill-carousel {
+  overflow-x: hidden;
+}
+
+.skill-slider {
+  transition: $standard-transition;
+}
+
+.skill-card {
+  @include flex;
+  @include flex-column;
+  @include align-center;
+  background-color: rgba(35, 60, 150, 0.4);
+  height: 100%;
+  transition: $standard-transition;
+  min-width: (100%) / 3;
+
+  &:hover {
+    background-color: rgba(35, 160, 50, 0.4);
+  }
+}
+
+.skill-control-box {
+  @include flex;
+  justify-content: space-between;
+  background-color: rgba(150, 35, 60, 0.4);
+  pointer-events: none;
+  position: absolute;
+}
+
+.control {
+  background-color: rgba(150, 35, 160, 0.2);
+  height: 100%;
+  pointer-events: auto;
+  transition: $standard-transition;
+  width: 10%;
+
+  &:hover {
+    background-color: rgba(50, 35, 60, 0.4);
+  }
+}

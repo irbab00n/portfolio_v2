@@ -1,4 +1,5 @@
 import React from 'react';
+import SkillCarousel from '../SkillCarousel';
 
 export default class Features extends React.Component {
   constructor(props) {
@@ -9,9 +10,7 @@ export default class Features extends React.Component {
     return (
       <section id="about">
         <div id="about-content">
-          <div className="about-container about-half-ch about-full-cw blue-bg-test">
-            Carousel of Skills
-          </div>
+          <SkillCarousel />
           <div className="about-container about-full-ch about-3quart-cw green-bg-test">
             Left
           </div>
