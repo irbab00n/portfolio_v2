@@ -3,7 +3,7 @@
   filter: drop-shadow(0px 5px 5px rgba(50, 50, 50, 0.8));
   opacity: 1.0;
   transition: $long-time;
-  // transition-delay: $standard-time;
+  transition-delay: $standard-time;
 }
 
 .video-loading {
@@ -15,15 +15,23 @@
   @include flex-column;
   @include align-center;
   @include justify-center;
+  background-color: rgba(165, 165, 165, 1.0);
+  transition: $long-time;
+
+  &:hover {
+    background-color: rgba(185, 185, 185, 1.0);
+  }
 }
 
 .video-intro-loading {
+  @include flex;
+  @include align-center;
+  @include justify-center;
   background: radial-gradient(rgba(100, 100, 100, 0.4) 0%, rgba(100, 100, 100, 0.7) 40%, rgba(100, 100, 100, 0.0) 60%);
   height: 18vw;
   position: absolute;
   opacity: 0.0;
   transition: $standard-transition;
-  transition-delay: $long-time;
   width: 18vw;
 }
 

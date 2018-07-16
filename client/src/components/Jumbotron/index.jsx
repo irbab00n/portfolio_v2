@@ -1,8 +1,8 @@
 import React from 'react';
 
 import mountain from '../../../public/mountain-small.png';
+import cloudBackground from '../../../public/cloud_large_small.png';
 import trees from '../../../public/trees-small.png';
-import cloudBackground from '../../../public/cloud_large_raw.png';
 import leftImage from '../../../public/cloud_left_transition_small.png';
 import rightImage from '../../../public/cloud_right_transition_small.png';
 
@@ -18,7 +18,7 @@ export default class Jumbotron extends React.Component {
   }
 
   componentDidMount() {
-    document.addEventListener('scroll', this.calculatePercent);
+    // document.addEventListener('scroll', this.calculatePercent);
   }
 
   /* calculatePercent Info
@@ -54,7 +54,8 @@ export default class Jumbotron extends React.Component {
       classes = classes.join(' ');
     }
 
-    let { scrollPercent } = this.state;
+    let { currentYOffset, jumbotronHeight } = this.props;
+    let scrollPercent = (currentYOffset / jumbotronHeight) * 100;
     let transformPercent = scrollPercent / ratio + xAdjust;
     
     return (
@@ -63,12 +64,12 @@ export default class Jumbotron extends React.Component {
   }
 
   componentWillUnmount() {
-    document.removeEventListener('scroll', this.calculatePercent);
+    // document.removeEventListener('scroll', this.calculatePercent);
   }
 
   render() {
 
-    const { isMobile, isPortait } = this.props;
+    const { isMobile, isPortait} = this.props;
 
     return (
       /*
@@ -77,6 +78,7 @@ export default class Jumbotron extends React.Component {
       */
       <section id="jumbotron" className="page">
         <div className="jumbotron-images-wrapper page">
+          <img className="jumbotron-image-full-size" src={cloudBackground}/>
           <img className="trees-image" src={trees}/>
           {
             this.renderHorizontalTranslateImage(rightImage, 'right-image', 8, -20, -5)

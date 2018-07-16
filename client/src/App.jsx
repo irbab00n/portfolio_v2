@@ -9,22 +9,30 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentYOffset: 0,
       isPortrait: false,
       jumbotronHeight: 0,
     };
+    this.masterScrollHandler = this.masterScrollHandler.bind(this);
     this.navScrollToggleHandler = this.navScrollToggleHandler.bind(this);
     this.updateJumbotronHeight = this.updateJumbotronHeight.bind(this);
   }
 
   componentDidMount() {
-    document.addEventListener('scroll', this.navScrollToggleHandler);
+    document.addEventListener('scroll', this.masterScrollHandler);
     window.addEventListener('orientationchange', this.updateJumbotronHeight);
     this.updateJumbotronHeight();
   }
 
-  navScrollToggleHandler() {
-    let { jumbotronHeight } = this.state;
+  masterScrollHandler() {
     let currentYOffset = window.pageYOffset;
+    this.setState({
+      currentYOffset
+    });
+  }
+
+  navScrollToggleHandler(currentYOffset) {
+    let { jumbotronHeight } = this.state;
     
     let nav = document.getElementsByClassName('navigation')[0];
     let mobileNavToggle = document.getElementsByClassName('mobile-nav-toggle')[0];
@@ -48,19 +56,21 @@ export default class App extends React.Component {
   }
 
   componentWillUnmount() {
-    document.removeEventListener('scroll', this.navScrollToggleHandler);
+    document.removeEventListener('scroll', this.masterScrollHandler);
     window.removeEventListener('orientationchange', this.updateJumbotronHeight);
   }
 
   render() {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    const { isPortrait, jumbotronHeight } = this.state;
+    const { currentYOffset, isPortrait, jumbotronHeight } = this.state;
     return (
       <div className="content-body">
         <Navigation 
           isMobile={isMobile}
+          jumbotronHeight={jumbotronHeight}
         />
-        <Jumbotron 
+        <Jumbotron
+          currentYOffset={currentYOffset}
           jumbotronHeight={jumbotronHeight}
           isMobile={isMobile}
           isPortrait={isPortrait}
