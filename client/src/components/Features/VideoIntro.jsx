@@ -19,7 +19,9 @@ export default class VideoIntro extends React.Component {
   render() {
     return (
       <div className="about-container about-full-ch about-3quart-cw video-intro">
-        <div id="loading" className="video-intro-loading video-intro-loading-active">Content</div>
+        <div id="loading" className="video-intro video-intro-loading video-intro-loading-active">
+          <div className="spinning-loader"/>
+        </div>
         <ReactPlayer
           id="intro-video"
           className="video video-loading"
@@ -27,6 +29,7 @@ export default class VideoIntro extends React.Component {
           height="36vw"
           width="64vw"
           onReady={this.toggleVideoLoading}
+          onBuffer={() => console.log('buffer is running')}
         />
       </div>
     );

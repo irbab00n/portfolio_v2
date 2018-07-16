@@ -3,7 +3,7 @@
   filter: drop-shadow(0px 5px 5px rgba(50, 50, 50, 0.8));
   opacity: 1.0;
   transition: $long-time;
-  transition-delay: $standard-time;
+  // transition-delay: $standard-time;
 }
 
 .video-loading {
@@ -11,20 +11,23 @@
 }
 
 .video-intro {
+  @include flex;
   @include flex-column;
   @include align-center;
   @include justify-center;
 }
 
 .video-intro-loading {
-  background-color: rgba(35, 35, 35, 0.4);
+  background: radial-gradient(rgba(100, 100, 100, 0.4) 0%, rgba(100, 100, 100, 0.7) 40%, rgba(100, 100, 100, 0.0) 60%);
   height: 18vw;
   position: absolute;
   opacity: 0.0;
   transition: $standard-transition;
-  width: 32vw;
+  transition-delay: $long-time;
+  width: 18vw;
 }
 
 .video-intro-loading-active {
-  opacity: 1.0;  
+  opacity: 1.0;
+  z-index: 10;
 }

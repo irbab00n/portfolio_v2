@@ -51,10 +51,18 @@
   min-height: 100vh;
 }
 
+@mixin half-height {
+  min-height: 50vh;
+}
+
 // Width Mixins
 
 @mixin full-width {
   min-width: 100%;
+}
+
+@mixin half-width {
+  min-width: 50%;
 }
 
 

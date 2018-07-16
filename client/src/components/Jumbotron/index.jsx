@@ -1,7 +1,7 @@
 import React from 'react';
 
-import mountain from '../../../public/mountain-png-2.png';
-import trees from '../../../public/trees.png';
+import mountain from '../../../public/mountain-small.png';
+import trees from '../../../public/trees-small.png';
 import cloudBackground from '../../../public/cloud_large_raw.png';
 import leftImage from '../../../public/cloud_left_transition_small.png';
 import rightImage from '../../../public/cloud_right_transition_small.png';
@@ -31,10 +31,8 @@ export default class Jumbotron extends React.Component {
       to animate the images
   */
   calculatePercent() {
-    let { jumbotronHeight } = this.props;
-    let currentYOffset = window.pageYOffset;
     this.setState({
-      scrollPercent: (currentYOffset / jumbotronHeight) * 100
+      scrollPercent: (window.pageYOffset / this.props.jumbotronHeight) * 100
     });
   }
 
@@ -58,11 +56,9 @@ export default class Jumbotron extends React.Component {
 
     let { scrollPercent } = this.state;
     let transformPercent = scrollPercent / ratio + xAdjust;
-    let style = {
-      transform: `translateX(${transformPercent}%) translateY(${yAdjust}%)`
-    };
+    
     return (
-      <img className={classes} src={image} style={style}/>
+      <img className={classes} src={image} style={{transform: `translateX(${transformPercent}%) translateY(${yAdjust}%)`}}/>
     );
   }
 
@@ -81,14 +77,13 @@ export default class Jumbotron extends React.Component {
       */
       <section id="jumbotron" className="page">
         <div className="jumbotron-images-wrapper page">
-          <img className="mountain-image" src={mountain}/>
           <img className="trees-image" src={trees}/>
           {
-            this.renderHorizontalTranslateImage(rightImage, 'right-image', 7, -20, -5)
+            this.renderHorizontalTranslateImage(rightImage, 'right-image', 8, -20, -5)
           }
-          <img className="jumbotron-image-full-size" src={cloudBackground}/>
+          <img className="mountain-image" src={mountain}/>
           {
-            this.renderHorizontalTranslateImage(leftImage, 'left-image', 3, 15, -30)
+            this.renderHorizontalTranslateImage(leftImage, 'left-image', 2, 50, 15)
           }
         </div>
       </section>

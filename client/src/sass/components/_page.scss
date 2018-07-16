@@ -3,6 +3,11 @@
   @include full-width;
 }
 
+.half-page {
+  @include half-height;
+  @include full-width;
+}
+
 @media screen and (orientation: portrait) and (max-width: 1024px) {
 
   .page {
