@@ -10,12 +10,10 @@ const DesktopNav = (props) => (
 
   <div className="navigation-nav-wrapper">
     <nav>
-      <a className="navigation-nav-link" onClick={() => {
-        document.getElementById('about').scrollIntoView(config)
-      }}>Link 1</a>
-      <a className="navigation-nav-link" href="">Link 2</a>
-      <a className="navigation-nav-link" href="">Link 3</a>
-      <a className="navigation-nav-link" href="">Link 4</a>
+      <a className="navigation-nav-link" href="/about">About Me</a>
+      <a className="navigation-nav-link" href="/projects">Projects</a>
+      <a className="navigation-nav-link" href="/blog">Blog</a>
+      <a className="navigation-nav-link" href="">Resume</a>
     </nav>
   </div>
 
