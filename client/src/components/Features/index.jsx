@@ -1,5 +1,6 @@
 import React from 'react';
 import SkillCarousel from '../SkillCarousel';
+import VideoIntro from './VideoIntro';
 
 export default class Features extends React.Component {
   constructor(props) {
@@ -11,9 +12,7 @@ export default class Features extends React.Component {
       <section id="about">
         <div id="about-content">
           <SkillCarousel />
-          <div className="about-container about-full-ch about-3quart-cw green-bg-test">
-            Left
-          </div>
+          <VideoIntro />
           <div className="about-container about-full-ch about-quarter-cw gray-bg-test">
             Right
           </div>
@@ -22,3 +21,5 @@ export default class Features extends React.Component {
     );
   }
 }
+
+// <span className="wistia_embed wistia_async_gv3h2gdxoe popover=true popoverAnimateThumbnail=true" style={{display:'inline-block',height:'36vh',position:'relative',width:'64vh'}}>&nbsp;</span> 

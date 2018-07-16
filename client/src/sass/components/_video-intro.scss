@@ -1,0 +1,30 @@
+.video {
+  -webkit-filter: drop-shadow(0px 5px 5px rgba(50, 50, 50, 0.8));
+  filter: drop-shadow(0px 5px 5px rgba(50, 50, 50, 0.8));
+  opacity: 1.0;
+  transition: $long-time;
+  transition-delay: $standard-time;
+}
+
+.video-loading {
+  opacity: 0.0;
+}
+
+.video-intro {
+  @include flex-column;
+  @include align-center;
+  @include justify-center;
+}
+
+.video-intro-loading {
+  background-color: rgba(35, 35, 35, 0.4);
+  height: 18vw;
+  position: absolute;
+  opacity: 0.0;
+  transition: $standard-transition;
+  width: 32vw;
+}
+
+.video-intro-loading-active {
+  opacity: 1.0;  
+}

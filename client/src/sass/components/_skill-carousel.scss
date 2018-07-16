@@ -1,5 +1,7 @@
 .skill-carousel {
-  background-color: rgba(135, 135, 135, 1.0);
+  // -webkit-filter: drop-shadow(0px 5px 5px rgba(50, 50, 50, 0.8));
+  // filter: drop-shadow(0px 5px 5px rgba(50, 50, 50, 0.8));
+  background-color: rgba(150, 150, 150, 1.0);
   overflow-x: hidden;
 }
 
@@ -62,7 +64,7 @@
   @include align-center;
   @include justify-center;
   cursor: pointer;
-  color: rgba(205, 205, 205, 0.8);
+  color: rgba(205, 205, 205, 1.0);
   font-size: 5vh;
   height: 100%;
   opacity: 0.2;
@@ -77,9 +79,9 @@
 }
 
 .control-right {
-  background: linear-gradient(to left, rgba(75, 75, 75, 0.5) 0%, rgba(75, 75, 75, 0.0) 100%);
+  background: linear-gradient(to left, rgba(0, 122, 193, 0.6) 0%, rgba(75, 75, 75, 0.0) 100%);
 }
 
 .control-left {
-  background: linear-gradient(to right, rgba(75, 75, 75, 0.5) 0%, rgba(75, 75, 75, 0.0) 100%);
+  background: linear-gradient(to right, rgba(0, 122, 193, 0.6) 0%, rgba(75, 75, 75, 0.0) 100%);
 }
