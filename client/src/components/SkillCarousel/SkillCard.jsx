@@ -10,7 +10,7 @@ export default class SkillCard extends React.Component {
     let { description, image, title } = this.props.skill;
 
     return (
-      <div className="skill-card">
+      <div className="about-half-ch skill-card">
         <h2 className="skill-card-title no-select">{title}</h2>
         <img src={image} className="skill-card-image"/>
         <center className="skill-card-description">

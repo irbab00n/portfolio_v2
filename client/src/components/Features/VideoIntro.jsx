@@ -18,24 +18,27 @@ export default class VideoIntro extends React.Component {
 
   render() {
     return (
-      <div className="about-container about-full-ch about-3quart-cw video-intro">
-        <div id="loading" className="video-intro video-intro-loading video-intro-loading-active">
-          <div className="spinning-loader"/>
+      <div className="about-full-ch about-3quart-cw video-intro">
+        <h1 className="video-title">
+          Welcome to my portfolio
+        </h1>
+        <div className="video-wrapper">
+          <div id="loading" className="video-intro-loading video-intro-loading-active">
+            <div className="spinning-loader"/>
+          </div>
+          <ReactPlayer
+            id="intro-video"
+            className="video video-loading"
+            url="https://cosbyts.wistia.com/medias/gv3h2gdxoe"
+            height="27vw"
+            width="48vw"
+            onReady={this.toggleVideoLoading}
+          />
         </div>
-        <ReactPlayer
-          id="intro-video"
-          className="video video-loading"
-          url="https://cosbyts.wistia.com/medias/gv3h2gdxoe"
-          height="36vw"
-          width="64vw"
-          onReady={this.toggleVideoLoading}
-          onBuffer={() => console.log('buffer is running')}
-        />
+        <div className="">
+          To learn more about me, go to this link
+        </div>
       </div>
     );
   }
 }
-
-// The ReactPlayer has several callback props that we can utilize to create functionality
-
-// onReady -- called when media is loaded, we can use this to be able to toggle off the loading classes from the video and loading element

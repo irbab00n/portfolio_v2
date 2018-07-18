@@ -2,9 +2,15 @@ import React from 'react';
 import SkillCarousel from '../SkillCarousel';
 import VideoIntro from './VideoIntro';
 
+import shallowEqual from '../../lib/shallowEqual';
+
 export default class Features extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return !shallowEqual(this.props, nextProps);
   }
 
   render() {
@@ -13,7 +19,7 @@ export default class Features extends React.Component {
         <div id="about-content">
           <SkillCarousel />
           <VideoIntro />
-          <div className="about-container about-full-ch about-quarter-cw gray-bg-test">
+          <div className="about-container about-full-ch about-quarter-cw gray-bg-test feature-list">
             Right
           </div>
         </div>

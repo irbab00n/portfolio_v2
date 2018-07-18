@@ -3,13 +3,17 @@ import Logo from './Logo';
 import DesktopNav from './DesktopNav';
 import MobileNav from './MobileNav';
 
+import navScrollHandler from '../../lib/navScrollHandler';
+import shallowEqual from '../../lib/shallowEqual';
+
 export default class Navigation extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      offsetPosition: null
-    };
     this.handleLinkClick = this.handleLinkClick.bind(this);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return !shallowEqual(this.state, nextState);
   }
 
   handleLinkClick(link) {
@@ -30,7 +34,7 @@ export default class Navigation extends React.Component {
 
   render() {
 
-    const { isMobile } = this.props;
+    const { currentYOffset, isMobile, jumbotronHeight } = this.props;
 
     return (
 

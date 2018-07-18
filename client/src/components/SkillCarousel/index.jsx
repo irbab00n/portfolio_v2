@@ -12,6 +12,10 @@ export default class SkillCarousel extends React.Component {
     this.calculateXTranslate = this.calculateXTranslate.bind(this);
     this.updateCarouselIndex = this.updateCarouselIndex.bind(this);
   }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.index !== nextState.index;
+  }
   
   /* calculateXTranslate info --
     Params:
@@ -61,10 +65,6 @@ export default class SkillCarousel extends React.Component {
 
     return (
       <div className="about-container about-half-ch about-full-cw skill-carousel">
-        <div className="about-half-ch about-full-cw skill-control-box">
-          <div className="control control-left no-select" onClick={() => this.updateCarouselIndex('dec')}>❮</div>
-          <div className="control control-right no-select" onClick={() => this.updateCarouselIndex('inc')}>❯</div>
-        </div>
         <div 
           className="about-container about-half-ch about-full-cw skill-slider"
           style={this.calculateXTranslate(index)}
@@ -77,6 +77,10 @@ export default class SkillCarousel extends React.Component {
             })
           }
         </div>        
+        <div className="about-half-ch about-full-cw skill-control-box">
+          <div className="about-half-ch control control-left no-select" onClick={() => this.updateCarouselIndex('dec')}>❮</div>
+          <div className="about-half-ch control control-right no-select" onClick={() => this.updateCarouselIndex('inc')}>❯</div>
+        </div>
       </div>
     );
   }

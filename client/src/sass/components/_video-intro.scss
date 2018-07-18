@@ -1,41 +1,85 @@
+/*
+COLLAPSE --COMPONENT BASE STYLES-- EXPAND
+  
+    Not included in this sheet:
+
+    - about-full-ch
+      Description:
+        Comes from the "about" parent component layout sheet
+        Sets component height to the full height of 
+        the parent container
+      Origin: 
+        sass/layout/_about.scss
+
+    - about-3quart-cw
+      Description: 
+        Comes from the "about" parent component layout sheet
+        Sets component width to 3/4 the parent container
+      Origin: 
+        sass/layout/_about.scss
+*/
+
+.video-intro {
+  @include deep-box-shadow;
+  @include flex;
+  @include flex-column;
+  @include align-center;
+  justify-content: space-evenly;
+  background-color: rgba(0, 122, 193, 0.6);
+  transition: $long-time;
+
+  &:hover {
+    background-color: rgba(0, 122, 193, 0.8);
+  }
+}
+
+/*
+  - VIDEO TITLE STYLES -
+*/
+.video-title {
+  font-size: 5vh;
+}
+
+/* 
+  - VIDEO PLAYER STYLES - 
+*/
+
+// Wrapper for the player and loader to be centered
+.video-wrapper {
+  @include flex;
+  @include align-center;
+  @include justify-center;
+  height: 27vw;
+  width: 48vw;
+}
+
+// decorator for the ReactPlayer element
 .video {
   -webkit-filter: drop-shadow(0px 5px 5px rgba(50, 50, 50, 0.8));
   filter: drop-shadow(0px 5px 5px rgba(50, 50, 50, 0.8));
   opacity: 1.0;
-  transition: $long-time;
+  transition: $standard-transition;
   transition-delay: $standard-time;
 }
 
+// While the video is loading, don't display it
 .video-loading {
   opacity: 0.0;
 }
 
-.video-intro {
-  @include flex;
-  @include flex-column;
-  @include align-center;
-  @include justify-center;
-  background-color: rgba(165, 165, 165, 1.0);
-  transition: $long-time;
-
-  &:hover {
-    background-color: rgba(185, 185, 185, 1.0);
-  }
-}
-
+// Wrapper element for the spinning loader component
 .video-intro-loading {
   @include flex;
   @include align-center;
   @include justify-center;
-  background: radial-gradient(rgba(100, 100, 100, 0.4) 0%, rgba(100, 100, 100, 0.7) 40%, rgba(100, 100, 100, 0.0) 60%);
+  background: radial-gradient(rgba(0, 62, 83, 0.1) 0%, rgba(0, 62, 83, 0.3) 40%, rgba(0, 62, 83, 0.0) 60%);
   height: 18vw;
   position: absolute;
-  opacity: 0.0;
   transition: $standard-transition;
   width: 18vw;
 }
 
+// Active state for the spinning loader component
 .video-intro-loading-active {
-  opacity: 1.0;
   z-index: 10;
 }

@@ -43,7 +43,8 @@ export default class MobileNav extends React.Component {
     }
   }
 
-  renderToggle(isMobile) {
+  renderToggle() {
+    let { isMobile } = this.props;
     if (isMobile) {
       return (
         <a 
@@ -66,11 +67,10 @@ export default class MobileNav extends React.Component {
   }
 
   render() {
-    const { isMobile } = this.props;
     return (
       <div className="mobile-nav-wrapper">
         {
-          this.renderToggle(isMobile)
+          this.renderToggle()
         }
       </div>
     );

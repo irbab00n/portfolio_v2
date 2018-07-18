@@ -1,198 +1,28 @@
 #jumbotron {
-  background: linear-gradient(to top, rgba(35, 75, 50, 0.1) 0%, rgba(35, 75, 70, 0.1) 5%, rgba(200, 235, 240, 1.0) 20%, rgba(125, 200, 235, 1.0) 50%, rgba(10, 120, 180, 0.9) 100%);
-  overflow: hidden;  
+  background-color: $bg-primary-color;
+  overflow: hidden; 
+  max-height: 75vh;
   width: 100%;  
   z-index: -1000;
 }
 
 .jumbotron-images-wrapper {
-  @include flex;
-  @include flex-column;
-  @include align-center;
-  @include justify-center;
-  color: black;
-  overflow: hidden;
-  position: relative;
-}
-
-.mountain-image { 
-  height: 80vh;
-  opacity: 0.5;
-  position: absolute;
-  top: 20vh;
-  transition: 0.1s;
+  max-height: 75vh; 
   width: 100%;
 }
-
-.trees-image {
-  @include flipImage;
-  height: 50vh;
-  opacity: 0.7;
-  position: absolute;
-  top: 70vh;
-  transition: 0.1s;
-  width: 100%;
-}
-
-// Background cloud animation
-
-@keyframes background-animation {
-  0% {
-    opacity: 0.0;
-    transform: translateX(-20%);
-  }
-
-  5% {
-    opacity: 0.6;
-  }
-
-  25% {
-    opacity: 0.7;
-  }
-  50% {
-    opacity: 0.8;
-  }
-  75% {
-    opacity: 0.7;
-  }
-
-  95% {
-    opacity: 0.6;
-  }
-
-  100% {
-    opacity: 0.0;
-    transform: translateX(20%);
-  }
-}
-
-// Background cloud image
 
 .jumbotron-image-full-size {
-  animation-name: background-animation;
-  animation-duration: 25s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  background-size: contain;
-  height: 80vh;
-  opacity: 0.9;
-  position: absolute;
-  top: -5vh;
-  transition: 0.1s;
-  width: 100vw;
-}
-
-// Cloud pulsing animations
-@keyframes cloud-pulse-1 {
-  0% {opacity: 0.7;}
-  20% {opacity: 0.8;}
-  35% {opacity: 0.7;}
-  50% {opacity: 0.9;}
-  65% {opacity: 0.8;}
-  80% {opacity: 0.6;}
-  100% {opacity: 0.7;}
-}
-
-@keyframes cloud-pulse-2 {
-  0% {opacity: 0.4;}
-  20% {opacity: 0.9;}
-  35% {opacity: 0.6;}
-  50% {opacity: 0.9;}
-  65% {opacity: 0.8;}
-  80% {opacity: 0.4;}
-  100% {opacity: 0.4;}
-}
-
-// Cloud images
-
-.left-image {
-  animation-name: cloud-pulse-1;
-  animation-duration: 8s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  height: 45vh;
-  position: absolute;
-  opacity: 1;
-  transition: 0.1s;
-  width: 60vw;
-}
-
-.right-image {
-  animation-name: cloud-pulse-2;
-  animation-duration: 5s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  height: 60vh;
-  opacity: 0.7;
-  position: absolute;
-  transition: 0.1s;
-  width: 100vw;
+  width: 100%;
 }
 
 @media screen and (orientation: portrait) and (max-width: 1024px) {
 
-  .mountain-image { 
-    height: 80vh;
-    left: -90vw;
-    top: 20vh;
-    width: 300vw;
-  }
 
-  .trees-image {
-    height: 30vh;
-    left: 0vw;
-    opacity: 0.7;
-    top: 80vh;
-    width: 140vw;
-  }
-
-  .jumbotron-image-full-size {
-    left: -40vw;
-    top: 30vh;
-    height: 60vh;
-    width: 200vw;
-  }
-
-  .left-image {
-    height: 40vh;
-    width: 150vw;
-  }
-
-  .right-image {
-    height: 40vh;
-    width: 150vw;
-  }
 
 }
 
 @media screen and (orientation: landscape) and (max-width: 1024px) {
 
-  .mountain-image { 
-    height: 70vh;
-    top: 30vh;
-    width: 100vw;
-  }
 
-  .trees-image {
-    height: 45vh;
-    top: 65vh;
-    width: 100vw;
-  }
-
-  .jumbotron-image-full-size {
-    top: 0vh;
-    height: 80vh;
-    width: 100vw;
-  }
-
-  .left-image {
-    height: 80vh;
-    width: 100vw;
-  }
-
-  .right-image {
-    height: 60vh;
-    width: 100vw;
-  }
 
 }
