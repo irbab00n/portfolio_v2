@@ -14,12 +14,14 @@ export default class Features extends React.Component {
   }
 
   render() {
+
+    console.log('rendering');
     return (
       <section id="about">
         <div id="about-content">
           <SkillCarousel />
           <VideoIntro />
-          <div className="about-container about-full-ch about-quarter-cw gray-bg-test feature-list">
+          <div className="about-container about-full-ch about-quarter-cw feature-list">
             Right
           </div>
         </div>

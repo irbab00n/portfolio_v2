@@ -1,8 +1,27 @@
 import React from 'react';
 
+import goldenGateSmall from '../../../public/golden-gate-bridge-wallpaper-small.jpg';
+
 export default class Jumbotron extends React.Component {
   constructor(props) {
     super(props);
+    this.handleScroll = this.handleScroll.bind(this);
+    this.handleTargetMouseOver = this.handleTargetMouseOver.bind(this);
+  }
+
+  handleScroll() {
+    let target = document.getElementById('jumbotron-scroll-target');
+    let config = {
+      block: 'start',
+      inline: 'nearest',
+      behavior: 'smooth'
+    };
+    target.scrollIntoView(config);
+  }
+
+  handleTargetMouseOver() {
+    let hoverBackground = document.getElementsByClassName('button-hover-background')[0];
+    hoverBackground.classList.toggle('button-hovered');
   }
 
   render() {
@@ -14,11 +33,15 @@ export default class Jumbotron extends React.Component {
         If we are intending to make any of the images here unselectable,
         we will have change the element type to a <div> that uses the images as a background
       */
-      <section id="jumbotron">
+      <div id="jumbotron">
         <div className="jumbotron-images-wrapper">
-          <img className="jumbotron-image-full-size" src={'https://conteudo.startse.com.br/wp-content/uploads/2016/04/golden-gate-bridge-wallpaper-5.jpg'}/>
+          <img className="jumbotron-image-full-size" src={goldenGateSmall}/>
         </div>
-      </section>
+        <div id="jumbotron-scroll-target" onMouseEnter={this.handleTargetMouseOver} onMouseLeave={this.handleTargetMouseOver}>
+          <span className="target-button no-select" onClick={this.handleScroll}>Click here to learn more!</span>
+          <div className="button-hover-background"/>
+        </div>
+      </div>
 
     );
 
