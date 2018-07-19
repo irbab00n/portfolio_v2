@@ -13,7 +13,6 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      percentScrolled: 0,
       isPortrait: window.innerHeight > window.innerWidth,
       jumbotronHeight: 0,
       jumbotronTarget: 0
@@ -23,8 +22,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('orientationchange', this.updateViewInformation);
-    window.addEventListener('resize', this.updateViewInformation);
+    window.addEventListener('orientationchange', () => setTimeout(this.updateViewInformation, 200));
     this.updateViewInformation();
   }
 
@@ -37,7 +35,6 @@ export default class App extends React.Component {
   updateViewInformation() {
     let jumbotronHeight = document.getElementById('jumbotron').offsetHeight;
     let jumbotronTarget = jumbotronHeight - document.getElementById('jumbotron-scroll-target').offsetHeight;
-    console.log('jumbotronTarget: ', jumbotronTarget);
     this.setState({
       isPortrait: window.innerHeight > window.innerWidth,
       jumbotronHeight,
@@ -46,8 +43,7 @@ export default class App extends React.Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('orientationchange', this.updateViewInformation);
-    window.removeEventListener('resize', this.updateViewInformation);
+    window.removeEventListener('orientationchange', () => setTimeout(this.updateViewInformation, 200));
   }
 
   render() {
