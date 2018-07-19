@@ -3,6 +3,8 @@ import SkillCard from './SkillCard';
 
 import { skills } from './skills';
 
+import shallowEqual from '../../lib/shallowEqual';
+
 export default class SkillCarousel extends React.Component {
   constructor(props) {
     super(props);
@@ -10,12 +12,20 @@ export default class SkillCarousel extends React.Component {
       index: 0
     };
     this.calculateXTranslate = this.calculateXTranslate.bind(this);
+    this.renderControlType = this.renderControlType.bind(this);
     this.renderSkillsCarousel = this.renderSkillsCarousel.bind(this);
     this.updateCarouselIndex = this.updateCarouselIndex.bind(this);
   }
 
+  componentDidMount() {
+    window.addEventListener('orientationchange', () => this.setState({index: 0}));
+  }
+
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.index !== nextState.index;
+    let shouldUpdate = false;
+    shallowEqual(this.props, nextProps) ? null : shouldUpdate = true;
+    this.state.index !== nextState.index ? shouldUpdate = true : null;
+    return shouldUpdate;
   }
   
   /* calculateXTranslate info --
@@ -26,40 +36,52 @@ export default class SkillCarousel extends React.Component {
       index = 3 => transform = 100%
       index = 1 => transform = 33.3333%
   */
-  calculateXTranslate(index) {
-    let cardSize = 100 / 3;
+  calculateXTranslate(index, sizeDivision) {
+    let cardSize = 100 / sizeDivision;
     let transformPercent = cardSize * index;
     return {transform: `translateX(${-transformPercent}%)`};
   }
 
-  renderSkillsCarousel(index) {
-    let { isMobile, isPortrait } = this.props;
-    // if not in mobile, return the desktop version
+  renderControlType(isMobile, height, direction) {
+    let update = 'dec';
+    let tag = 10094;
+    direction === 'right' ? (update = 'inc', tag = 10095) : null;
 
     if (isMobile) {
-      if (isPortrait) {
-        // if portrait, the following rules apply
-        // the height of the skills should be 1/2 height
-        // the width of each skill should be the full width
-        // translating by index should translate by 100% each time
-        // max index is the length of the skills - 1
-      }
-      // if in mobile and landscape
-      // the height of the skills should be the full height
-      // the width of each skill should be half width
-      // translating bu index should translate by 50% each time
-      // max index is the length of the skills - 2
-    } 
+      return (
+        <div className={`about-${height}-ch control control-${direction} no-select`} onTouchStart={() => this.updateCarouselIndex(update)}>{String.fromCharCode(tag)}</div>
+      );
+    } else {
+      return (
+        <div className={`about-${height}-ch control control-${direction} no-select`} onClick={() => this.updateCarouselIndex(update)}>{String.fromCharCode(tag)}</div>
+      );
+    }
+  }
+
+  renderSkillsCarousel(index) {
+    let { isMobile, isPortrait } = this.props;
+
+    let contentHeight = 'half'; // default is half content height
+    let sizeDivision = 3; // default is 3
+
+    isMobile ? (contentHeight = 'full', sizeDivision = 2) : null;
+    isPortrait ? (contentHeight = 'half', sizeDivision = 1) : null;
+    let classList = `about-container about-${contentHeight}-ch about-full-cw skill-slider`;
 
     return (
       <div 
-        className="about-container about-half-ch about-full-cw skill-slider"
-        style={this.calculateXTranslate(index)}
+        className={classList}
+        style={this.calculateXTranslate(index, sizeDivision)}
       >
         {
           skills.map((skill, index) => {
             return (
-              <SkillCard key={`skill-${index}`}skill={skill}/>
+              <SkillCard 
+                isMobile={isMobile}
+                isPortrait={isPortrait}
+                key={`skill-${index}`}
+                skill={skill}
+              />
             );
           })
         }
@@ -75,9 +97,16 @@ export default class SkillCarousel extends React.Component {
   */
   updateCarouselIndex(update) {
     let { index } = this.state;
+    let { isMobile, isPortrait } = this.props;
+
+    let limitValue = 3;
+
+    isMobile ? limitValue = 2 : null;
+    isPortrait ? limitValue = 1 : null;
+
     switch (update) {
       case 'inc':
-        if (index === skills.length - 3) {
+        if (index === skills.length - limitValue) {
           return;
         }
         this.setState({index: index + 1});
@@ -95,18 +124,31 @@ export default class SkillCarousel extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('orientationchange', () => this.setState({index: 0}));
+  }
+
   render() {
 
     let { index } = this.state;
+    let { isMobile, isPortrait } = this.props;
+
+    let height = 'half';
+    isMobile ? height = 'full' : null;
+    isPortrait ? height = 'half' : null;
 
     return (
-      <div className="about-container about-half-ch about-full-cw skill-carousel">
+      <div className={`about-container about-${height}-ch about-full-cw skill-carousel`}>
         {
           this.renderSkillsCarousel(index)
         }
-        <div className="about-half-ch about-full-cw skill-control-box">
-          <div className="about-half-ch control control-left no-select" onClick={() => this.updateCarouselIndex('dec')}>❮</div>
-          <div className="about-half-ch control control-right no-select" onClick={() => this.updateCarouselIndex('inc')}>❯</div>
+        <div className={`about-${height}-ch about-full-cw skill-control-box`}>
+          {
+            this.renderControlType(isMobile, height, 'left')
+          }          
+          {
+            this.renderControlType(isMobile, height, 'right')
+          }  
         </div>
       </div>
     );

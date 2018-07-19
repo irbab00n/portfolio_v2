@@ -38,7 +38,7 @@ export default class Jumbotron extends React.Component {
           <img className="jumbotron-image-full-size" src={goldenGateSmall}/>
         </div>
         <div id="jumbotron-scroll-target" onMouseEnter={this.handleTargetMouseOver} onMouseLeave={this.handleTargetMouseOver}>
-          <span className="target-button no-select" onClick={this.handleScroll}>Click here to learn more!</span>
+          <span className="target-button no-select" onClick={this.handleScroll}>Start here!</span>
           <div className="button-hover-background"/>
         </div>
       </div>

@@ -11,9 +11,7 @@ export default class VideoIntro extends React.Component {
   }
 
   componentDidMount() {
-    console.log('mounting the video');
     let introVideoEl = document.getElementsByClassName('video-intro')[0];
-    // toggle off the loading classes from the elements we need to.
     setTimeout(() => introVideoEl.classList.toggle('loading'), 100);
   }
 

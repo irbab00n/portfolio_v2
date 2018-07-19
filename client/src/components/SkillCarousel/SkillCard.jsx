@@ -3,14 +3,54 @@ import React from 'react';
 export default class SkillCard extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      orientationListener: false
+    };
+    this.buildClassList = this.buildClassList.bind(this);
+    this.calculateCardWidth = this.calculateCardWidth.bind(this);
+    this.handleOrientationChange = this.handleOrientationChange.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('orientationchange', this.handleOrientationChange);
+  }
+
+  buildClassList(isPortrait, isMobile) {
+    let heightString = 'about-half-ch'; // default size is half content height
+    isMobile ? heightString = 'about-full-ch' : null;
+    isPortrait ? heightString = 'about-half-ch' : null;
+    // isMobile is about-full-ch skillcard
+    // isPortrait is about-half-ch skillcard
+    return `${heightString} skill-card`;
+  }
+
+  calculateCardWidth(isPortrait, isMobile) {
+    let finalWidth = 100 / 3; // starts off at 33.3333%
+    isMobile ? finalWidth = 50 : null; // if mobile, default to 50% for landscape
+    isPortrait ? finalWidth = 100 : null; // if portrait, set width to 100%
+    return {minWidth: `${finalWidth}%`};
+  }
+
+  handleOrientationChange() {
+    this.setState({
+      orientationListener: !this.state.orientationListener
+    });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('orientationchange', this.handleOrientationChange);
   }
 
   render() {
 
+    let { isPortrait, isMobile } = this.props;
     let { description, image, title } = this.props.skill;
 
+    // console.log('built class list: ', this.buildClassList(isPortrait, isMobile));
+    // console.log('calculated card width: ', this.calculateCardWidth(isPortrait, isMobile));
+
     return (
-      <div className="about-half-ch skill-card">
+      <div className={this.buildClassList(isPortrait, isMobile)} style={this.calculateCardWidth(isPortrait, isMobile)}>
         <h2 className="skill-card-title no-select">{title}</h2>
         <img src={image} className="skill-card-image"/>
         <center className="skill-card-description">
@@ -31,3 +71,5 @@ export default class SkillCard extends React.Component {
     );
   }
 }
+
+// style={this.calculateCardWidth(isPortrait, isMobile)}
