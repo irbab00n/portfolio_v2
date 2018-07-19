@@ -10,6 +10,7 @@ export default class SkillCarousel extends React.Component {
       index: 0
     };
     this.calculateXTranslate = this.calculateXTranslate.bind(this);
+    this.renderSkillsCarousel = this.renderSkillsCarousel.bind(this);
     this.updateCarouselIndex = this.updateCarouselIndex.bind(this);
   }
 
@@ -29,6 +30,41 @@ export default class SkillCarousel extends React.Component {
     let cardSize = 100 / 3;
     let transformPercent = cardSize * index;
     return {transform: `translateX(${-transformPercent}%)`};
+  }
+
+  renderSkillsCarousel(index) {
+    let { isMobile, isPortrait } = this.props;
+    // if not in mobile, return the desktop version
+
+    if (isMobile) {
+      if (isPortrait) {
+        // if portrait, the following rules apply
+        // the height of the skills should be 1/2 height
+        // the width of each skill should be the full width
+        // translating by index should translate by 100% each time
+        // max index is the length of the skills - 1
+      }
+      // if in mobile and landscape
+      // the height of the skills should be the full height
+      // the width of each skill should be half width
+      // translating bu index should translate by 50% each time
+      // max index is the length of the skills - 2
+    } 
+
+    return (
+      <div 
+        className="about-container about-half-ch about-full-cw skill-slider"
+        style={this.calculateXTranslate(index)}
+      >
+        {
+          skills.map((skill, index) => {
+            return (
+              <SkillCard key={`skill-${index}`}skill={skill}/>
+            );
+          })
+        }
+      </div>
+    );
   }
   
   /* updateCarouselIndex info --
@@ -65,18 +101,9 @@ export default class SkillCarousel extends React.Component {
 
     return (
       <div className="about-container about-half-ch about-full-cw skill-carousel">
-        <div 
-          className="about-container about-half-ch about-full-cw skill-slider"
-          style={this.calculateXTranslate(index)}
-        >
-          {
-            skills.map((skill, index) => {
-              return (
-                <SkillCard key={`skill-${index}`}skill={skill}/>
-              );
-            })
-          }
-        </div>        
+        {
+          this.renderSkillsCarousel(index)
+        }
         <div className="about-half-ch about-full-cw skill-control-box">
           <div className="about-half-ch control control-left no-select" onClick={() => this.updateCarouselIndex('dec')}>❮</div>
           <div className="about-half-ch control control-right no-select" onClick={() => this.updateCarouselIndex('inc')}>❯</div>

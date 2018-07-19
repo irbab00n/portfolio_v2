@@ -14,33 +14,36 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       percentScrolled: 0,
-      isPortrait: false,
+      isPortrait: window.innerHeight > window.innerWidth,
       jumbotronHeight: 0,
     };
     this.masterScrollHandler = this.masterScrollHandler.bind(this);
-    this.updateJumbotronHeight = this.updateJumbotronHeight.bind(this);
+    this.updateViewInformation = this.updateViewInformation.bind(this);
   }
 
   componentDidMount() {
-    window.addEventListener('resize', this.updateJumbotronHeight);
-    this.updateJumbotronHeight();
+    window.addEventListener('orientationchange', this.updateViewInformation);
+    window.addEventListener('resize', this.updateViewInformation);
+    this.updateViewInformation();
   }
 
   masterScrollHandler() {
-    window.requestAnimationFrame(this.masterScrollHandler);
     let currentYOffset = getCurrentYOffset();
     navScrollHandler(currentYOffset, this.state.jumbotronHeight);
+    window.requestAnimationFrame(this.masterScrollHandler);
   }
 
-  updateJumbotronHeight() {
+  updateViewInformation() {
     let jumbotronHeight = document.getElementById('jumbotron').offsetHeight;
     this.setState({
+      isPortrait: window.innerHeight > window.innerWidth,
       jumbotronHeight
     }, this.masterScrollHandler);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updateJumbotronHeight);
+    window.removeEventListener('orientationchange', this.updateViewInformation);
+    window.removeEventListener('resize', this.updateViewInformation);
   }
 
   render() {
@@ -66,7 +69,10 @@ export default class App extends React.Component {
           isMobile={isMobile}
           isPortrait={isPortrait}
         />
-        <Features />
+        <Features 
+          isMobile={isMobile}
+          isPortrait={isPortrait}
+        />
       </div>
     );
   }
