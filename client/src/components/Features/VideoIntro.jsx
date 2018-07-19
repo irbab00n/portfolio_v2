@@ -4,7 +4,17 @@ import ReactPlayer from 'react-player';
 export default class VideoIntro extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      shouldRender: this.props.isMounted
+    };
     this.toggleVideoLoading = this.toggleVideoLoading.bind(this);
+  }
+
+  componentDidMount() {
+    console.log('mounting the video');
+    let introVideoEl = document.getElementsByClassName('video-intro')[0];
+    // toggle off the loading classes from the elements we need to.
+    setTimeout(() => introVideoEl.classList.toggle('loading'), 100);
   }
 
   toggleVideoLoading() {
@@ -16,9 +26,14 @@ export default class VideoIntro extends React.Component {
     video.classList.toggle('video-loading');
   }
 
+  componentWillUnmount() {
+    let introVideoEl = document.getElementsByClassName('video-intro')[0];
+    introVideoEl.classList.toggle('loading');
+  }
+
   render() {
     return (
-      <div className="about-full-ch about-3quart-cw video-intro">
+      <div id="selected-feature" className="about-full-ch about-3quart-cw video-intro loading">
         <h1 className="video-title">
           Welcome to my portfolio
         </h1>

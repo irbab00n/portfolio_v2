@@ -38,6 +38,7 @@
   z-index: 1;
 
   &:hover {
+    text-shadow: 0 0 1vh rgba(35, 35, 35, 1.0);
     color: rgba(245, 245, 245, 1.0);
   }
 }

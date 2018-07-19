@@ -11,11 +11,15 @@ export default class Features extends React.Component {
       currentFeature: 'video'
     };
     this.renderFeature = this.renderFeature.bind(this);
+    this.toggleLoadingThenUpdate = this.toggleLoadingThenUpdate.bind(this);
     this.updateCurrentFeature = this.updateCurrentFeature.bind(this);
   }
 
-  shouldComponentUpdate(nextProps) {
-    return !shallowEqual(this.props, nextProps);
+  shouldComponentUpdate(nextProps, nextState) {
+    let shouldRender = false;
+    shallowEqual(this.props, nextProps) ? null : shouldRender = true;
+    shallowEqual(this.state, nextState) ? null : shouldRender = true;
+    return shouldRender;
   }
 
   renderFeature(feature) {
@@ -23,7 +27,20 @@ export default class Features extends React.Component {
       case 'video':
         return <VideoIntro />;
         break;
+      case 'blog':
+        return (<div id="selected-feature" className="about-full-ch about-3quart-cw">Blog</div>);
+        break;
+      case 'projects':
+        return (<div id="selected-feature" className="about-full-ch about-3quart-cw">Projects</div>);
+        break;
     }
+  }
+
+  toggleLoadingThenUpdate(delay, feature) {
+    let selectedFeature = document.getElementById('selected-feature');
+    let loading = selectedFeature.classList.contains('loading');
+    loading ? null : selectedFeature.classList.toggle('loading');
+    setTimeout(() => this.updateCurrentFeature(feature), delay);
   }
 
   updateCurrentFeature(feature) {
@@ -50,12 +67,18 @@ export default class Features extends React.Component {
             this.renderFeature(currentFeature)
           }
           <div className="about-container about-full-ch about-quarter-cw feature-list">
-            Right
+            <div className="feature-list-item" onClick={() => this.toggleLoadingThenUpdate(400, 'video')}>
+              About Me
+            </div>
+            <div className="feature-list-item" onClick={() => this.toggleLoadingThenUpdate(400, 'projects')}>
+              Projects
+            </div>
+            <div className="feature-list-item" onClick={() => this.toggleLoadingThenUpdate(400, 'blog')}>
+              Blog
+            </div>
           </div>
         </div>
       </section>
     );
   }
 }
-
-// <span className="wistia_embed wistia_async_gv3h2gdxoe popover=true popoverAnimateThumbnail=true" style={{display:'inline-block',height:'36vh',position:'relative',width:'64vh'}}>&nbsp;</span> 

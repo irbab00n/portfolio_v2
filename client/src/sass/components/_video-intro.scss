@@ -20,19 +20,24 @@ COLLAPSE --COMPONENT BASE STYLES-- EXPAND
 */
 
 .video-intro {
-  @include deep-box-shadow;
   @include flex;
   @include flex-column;
   @include align-center;
-  justify-content: space-evenly;
   background-color: rgba(0, 122, 193, 1.0);
+  justify-content: space-evenly;
+  opacity: 1.0;
   transition: $long-time;
+}
+
+.video-intro.loading {
+  opacity: 0.0;
 }
 
 /*
   - VIDEO TITLE STYLES -
 */
 .video-title {
+  text-shadow: 0 0 1vh rgba(35, 35, 35, 1.0);
   font-size: 5vh;
 }
 
