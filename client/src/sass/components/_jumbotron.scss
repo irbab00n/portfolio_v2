@@ -20,9 +20,15 @@
   @include justify-center;
   align-self: flex-end;
   min-height: $navigation-height;
+  opacity: 1.0;
   position: absolute;
   transform: translateY(100vh - $navigation-height);
+  transition: $standard-transition;
   width: 100%;
+}
+
+#jumbotron-scroll-target.toggled {
+  opacity: 0.0;
 }
 
 .target-button {
