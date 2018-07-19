@@ -37,6 +37,9 @@ export default class Features extends React.Component {
   }
 
   toggleLoadingThenUpdate(delay, feature) {
+    if (feature === this.state.currentFeature) {
+      return;
+    }
     let selectedFeature = document.getElementById('selected-feature');
     let loading = selectedFeature.classList.contains('loading');
     loading ? null : selectedFeature.classList.toggle('loading');
