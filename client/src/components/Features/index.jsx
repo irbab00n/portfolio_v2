@@ -1,5 +1,8 @@
 import React from 'react';
 import SkillCarousel from '../SkillCarousel';
+import FeatureList from './FeatureList';
+import BlogPreview from './BlogPreview';
+import ProjectsPreview from './ProjectsPreview';
 import VideoIntro from './VideoIntro';
 
 import shallowEqual from '../../lib/shallowEqual';
@@ -22,16 +25,21 @@ export default class Features extends React.Component {
     return shouldRender;
   }
 
-  renderFeature(feature) {
+  renderFeature(feature, isMobile, isPortrait) {
     switch (feature) {
       case 'video':
-        return <VideoIntro />;
+        return (
+          <VideoIntro 
+            isMobile={isMobile}
+            isPortrait={isPortrait}
+          />
+        );
         break;
       case 'blog':
-        return (<div id="selected-feature" className="about-full-ch about-3quart-cw">Blog</div>);
+        return <BlogPreview />;
         break;
       case 'projects':
-        return (<div id="selected-feature" className="about-full-ch about-3quart-cw">Projects</div>);
+        return <ProjectsPreview />;
         break;
     }
   }
@@ -67,19 +75,14 @@ export default class Features extends React.Component {
             isPortrait={isPortrait}
           />
           {
-            this.renderFeature(currentFeature)
+            this.renderFeature(currentFeature, isMobile, isPortrait)
           }
-          <div className="about-container about-full-ch about-quarter-cw feature-list">
-            <div className="feature-list-item" onClick={() => this.toggleLoadingThenUpdate(400, 'video')}>
-              About Me
-            </div>
-            <div className="feature-list-item" onClick={() => this.toggleLoadingThenUpdate(400, 'projects')}>
-              Projects
-            </div>
-            <div className="feature-list-item" onClick={() => this.toggleLoadingThenUpdate(400, 'blog')}>
-              Blog
-            </div>
-          </div>
+          <FeatureList
+            currentFeature={currentFeature}
+            isMobile={isMobile}
+            isPortrait={isPortrait}
+            updateFunction={this.updateCurrentFeature}
+          />
         </div>
       </section>
     );

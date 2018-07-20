@@ -4,15 +4,7 @@ import ReactPlayer from 'react-player';
 export default class VideoIntro extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      shouldRender: this.props.isMounted
-    };
     this.toggleVideoLoading = this.toggleVideoLoading.bind(this);
-  }
-
-  componentDidMount() {
-    let introVideoEl = document.getElementsByClassName('video-intro')[0];
-    setTimeout(() => introVideoEl.classList.toggle('loading'), 100);
   }
 
   toggleVideoLoading() {
@@ -24,14 +16,28 @@ export default class VideoIntro extends React.Component {
     video.classList.toggle('video-loading');
   }
 
-  componentWillUnmount() {
-    let introVideoEl = document.getElementsByClassName('video-intro')[0];
-    introVideoEl.classList.toggle('loading');
-  }
-
   render() {
+
+    const { isMobile, isPortrait } = this.props;
+
+    let wrapperHeight = 'full'; // default size is full height
+    let wrapperWidth = '3quart'; // default width is 3 quarter width
+
+    let videoHeight = '27vw';
+    let videoWidth = '48vw';
+
+    isMobile && isPortrait ? 
+      (
+        wrapperHeight = 'half', 
+        wrapperWidth = 'full', 
+        videoHeight = '45vw',
+        videoWidth = '80vw'
+      ) : 
+      null;
+
+
     return (
-      <div id="selected-feature" className="about-full-ch about-3quart-cw video-intro loading">
+      <div id="selected-feature" className={`about-${wrapperHeight}-ch about-${wrapperWidth}-cw video-intro`}>
         <h1 className="video-title">
           Welcome to my portfolio
         </h1>
@@ -43,8 +49,8 @@ export default class VideoIntro extends React.Component {
             id="intro-video"
             className="video video-loading"
             url="https://cosbyts.wistia.com/medias/gv3h2gdxoe"
-            height="27vw"
-            width="48vw"
+            height={videoHeight}
+            width={videoWidth}
             onReady={this.toggleVideoLoading}
           />
         </div>

@@ -37,7 +37,8 @@ COLLAPSE --COMPONENT BASE STYLES-- EXPAND
   - VIDEO TITLE STYLES -
 */
 .video-title {
-  text-shadow: 0 0 1vh rgba(35, 35, 35, 1.0);
+  text-align: center;
+  text-shadow: 0 0 1.2vh rgba(15, 15, 15, 1.0);
   font-size: 5vh;
 }
 
@@ -85,4 +86,18 @@ COLLAPSE --COMPONENT BASE STYLES-- EXPAND
 .video-intro-loading-active {
   opacity: 1.0;
   z-index: 10;
+}
+
+@media screen and (orientation: portrait) and (max-width: 1024px) {
+  .video-title {
+    font-size: 2vh;
+  }
+
+  .video-wrapper {
+    height: 54vw;
+    width: 96vw;
+  }
+} 
+
+@media screen and (orientation: landscape) and (max-width: 1024px) {
 }

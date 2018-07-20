@@ -75,7 +75,7 @@
 }
 
 @mixin deep-box-shadow {
-  box-shadow: 0.5vh 0.2vh 0.8vh rgba(50, 50, 50, 0.5);
+  -webkit-box-shadow: 0.5vh 0.2vh 0.8vh rgba(50, 50, 50, 0.5);
   box-shadow: 0.5vh 0.2vh 0.8vh rgba(50, 50, 50, 0.5);
 }
 

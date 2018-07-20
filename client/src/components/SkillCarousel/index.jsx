@@ -45,15 +45,30 @@ export default class SkillCarousel extends React.Component {
   renderControlType(isMobile, height, direction) {
     let update = 'dec';
     let tag = 10094;
+
     direction === 'right' ? (update = 'inc', tag = 10095) : null;
 
     if (isMobile) {
       return (
-        <div className={`about-${height}-ch control control-${direction} no-select`} onTouchStart={() => this.updateCarouselIndex(update)}>{String.fromCharCode(tag)}</div>
+        <div 
+          className={`about-${height}-ch control control-${direction} no-select`}
+          onTouchEnd={
+            (e) => this.updateCarouselIndex(e, update)
+          }
+        >
+          {String.fromCharCode(tag)}
+        </div>
       );
     } else {
       return (
-        <div className={`about-${height}-ch control control-${direction} no-select`} onClick={() => this.updateCarouselIndex(update)}>{String.fromCharCode(tag)}</div>
+        <div
+          className={`about-${height}-ch control control-${direction} no-select`}
+          onClick={
+            (e) => this.updateCarouselIndex(e, update)
+          }
+        >
+          {String.fromCharCode(tag)}
+        </div>
       );
     }
   }
@@ -95,7 +110,8 @@ export default class SkillCarousel extends React.Component {
     Purpose:
       create a central updating function responsible for either increasing or decreasing the index
   */
-  updateCarouselIndex(update) {
+  updateCarouselIndex(e, update) {
+    e.preventDefault();
     let { index } = this.state;
     let { isMobile, isPortrait } = this.props;
 
