@@ -27,7 +27,12 @@ export default class ProjectsPreview extends React.Component {
       
     return (
       <div id="selected-feature" className={`about-${wrapperHeight}-ch about-${wrapperWidth}-cw projects-preview`}>
-        Projects
+        <div className="featured-project-wrapper">
+          Featured Project
+        </div>
+        <div className="more-projects-wrapper">
+          More Projects
+        </div>
       </div>
     );
   }

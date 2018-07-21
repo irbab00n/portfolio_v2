@@ -34,7 +34,7 @@ export default class Navigation extends React.Component {
 
   render() {
 
-    const { currentYOffset, isMobile, jumbotronHeight } = this.props;
+    const { isMobile } = this.props;
 
     return (
 
