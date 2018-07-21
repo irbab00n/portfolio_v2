@@ -26,11 +26,12 @@ COLLAPSE --COMPONENT BASE STYLES-- EXPAND
   background-color: rgba(0, 122, 193, 1.0);
   justify-content: space-evenly;
   opacity: 1.0;
-  transition: $long-time;
+  // transition: $long-time;
 }
 
 .video-intro.loading {
   opacity: 0.0;
+  transition: 0s;
 }
 
 /*
@@ -61,12 +62,13 @@ COLLAPSE --COMPONENT BASE STYLES-- EXPAND
   filter: drop-shadow(0px 5px 5px rgba(50, 50, 50, 0.8));
   opacity: 1.0;
   transition: $standard-transition;
-  transition-delay: 0.8s;
+  // transition-delay: 0.8s;
 }
 
 // While the video is loading, don't display it
 .video-loading {
   opacity: 0.0;
+  transition: 0s;
 }
 
 // Wrapper element for the spinning loader component
@@ -78,13 +80,14 @@ COLLAPSE --COMPONENT BASE STYLES-- EXPAND
   height: 18vw;
   opacity: 0.0;
   position: absolute;
-  transition: $standard-transition;
+  transition: 0s;
   width: 18vw;
 }
 
 // Active state for the spinning loader component
 .video-intro-loading-active {
   opacity: 1.0;
+  transition: $standard-transition;;
   z-index: 10;
 }
 

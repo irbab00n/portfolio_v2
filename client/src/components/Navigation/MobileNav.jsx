@@ -7,7 +7,6 @@ export default class MobileNav extends React.Component {
       offsetPosition: null
     };
     this.handleClick = this.handleClick.bind(this);
-    this.renderToggle = this.renderToggle.bind(this);
   }
 
   handleClick() {
@@ -22,7 +21,7 @@ export default class MobileNav extends React.Component {
     let target = document.getElementById('jumbotron-scroll-target');
 
     // save the current Y offset of the page
-    let currentOffset = window.pageYOffset;
+    // let currentOffset = window.pageYOffset;
 
     // Toggle container classes
     navContainer.classList.contains('toggled') ? null : navContainer.classList.toggle('toggled'); // Toggles the class that toggles on the white background for the nav bar
@@ -31,49 +30,29 @@ export default class MobileNav extends React.Component {
     target.classList.toggle('toggled');
 
     // lock the scroll on the background
-    html.classList.toggle('no-scroll'); // Prevents background content from being moved while menu is active
+    // html.classList.toggle('no-scroll'); // Prevents background content from being moved while menu is active
 
     // if we have an offsetPosition stored in the state
-    if (this.state.offsetPosition !== null) {
-      // set the y offset to the offsetPosition in state
-      window.scrollTo(0, this.state.offsetPosition);
-      // clear the offsetPosition from the state
-      this.setState({offsetPosition: null});
-    } else {
-      // set the offsetPosition to tshe currentOffset
-      this.setState({offsetPosition: currentOffset});
-    }
+    // if (this.state.offsetPosition !== null) {
+    //   // set the y offset to the offsetPosition in state
+    //   window.scrollTo(0, this.state.offsetPosition);
+    //   // clear the offsetPosition from the state
+    //   this.setState({offsetPosition: null});
+    // } else {
+    //   // set the offsetPosition to tshe currentOffset
+    //   this.setState({offsetPosition: currentOffset});
+    // }
   }
 
-  renderToggle() {
-    let { isMobile } = this.props;
-    if (isMobile) {
-      return (
+  render() {
+    return (
+      <div className="mobile-nav-wrapper">
         <a 
           className="mobile-nav-toggle"
           onTouchStart={(e) => this.handleClick(e)}
         >
           <span></span>
         </a>
-      );
-    } else {
-      return (
-        <a 
-          className="mobile-nav-toggle"
-          onClick={(e) => this.handleClick(e)}
-        >
-          <span></span>
-        </a>
-      );
-    }
-  }
-
-  render() {
-    return (
-      <div className="mobile-nav-wrapper">
-        {
-          this.renderToggle()
-        }
       </div>
     );
   }

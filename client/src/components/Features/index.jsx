@@ -14,7 +14,7 @@ export default class Features extends React.Component {
       currentFeature: 'video'
     };
     this.renderFeature = this.renderFeature.bind(this);
-    this.toggleLoadingThenUpdate = this.toggleLoadingThenUpdate.bind(this);
+    // this.toggleLoadingThenUpdate = this.toggleLoadingThenUpdate.bind(this);
     this.updateCurrentFeature = this.updateCurrentFeature.bind(this);
   }
 
@@ -44,15 +44,15 @@ export default class Features extends React.Component {
     }
   }
 
-  toggleLoadingThenUpdate(delay, feature) {
-    if (feature === this.state.currentFeature) {
-      return;
-    }
-    let selectedFeature = document.getElementById('selected-feature');
-    let loading = selectedFeature.classList.contains('loading');
-    loading ? null : selectedFeature.classList.toggle('loading');
-    setTimeout(() => this.updateCurrentFeature(feature), delay);
-  }
+  // toggleLoadingThenUpdate(delay, feature) {
+  //   if (feature === this.state.currentFeature) {
+  //     return;
+  //   }
+  //   let selectedFeature = document.getElementById('selected-feature');
+  //   let loading = selectedFeature.classList.contains('loading');
+  //   loading ? null : selectedFeature.classList.toggle('loading');
+  //   setTimeout(() => this.updateCurrentFeature(feature), delay);
+  // }
 
   updateCurrentFeature(feature) {
     if (typeof feature === 'string') {
