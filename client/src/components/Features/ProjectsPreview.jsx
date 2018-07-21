@@ -18,20 +18,15 @@ export default class ProjectsPreview extends React.Component {
     let wrapperHeight = 'full'; // default size is full height
     let wrapperWidth = '3quart'; // default width is 3 quarter width
 
-    let videoHeight = '27vw';
-    let videoWidth = '48vw';
-
     isMobile && isPortrait ? 
       (
         wrapperHeight = 'half', 
-        wrapperWidth = 'full', 
-        videoHeight = '45vw',
-        videoWidth = '80vw'
+        wrapperWidth = 'full'
       ) : 
       null;
       
     return (
-      <div id="selected-feature" className="about-full-ch about-3quart-cw">
+      <div id="selected-feature" className={`about-${wrapperHeight}-ch about-${wrapperWidth}-cw projects-preview`}>
         Projects
       </div>
     );

@@ -50,13 +50,13 @@ export default class Navigation extends React.Component {
           <div className="mobile-nav-content">
             <ul>
               <li>
-                <a href="/">Link 1</a>
+                <a href="/about">About Me</a>
               </li>
               <li>
-                <a href="/">Link 2</a>
+                <a href="/projects">Projects</a>
               </li>
               <li>
-                <a href="/">Link 3</a>
+                <a href="/blog">Blog</a>
               </li>
             </ul>
           </div>

@@ -36,10 +36,20 @@ export default class Features extends React.Component {
         );
         break;
       case 'blog':
-        return <BlogPreview />;
+        return (
+          <BlogPreview
+            isMobile={isMobile}
+            isPortrait={isPortrait}
+          />
+        );
         break;
       case 'projects':
-        return <ProjectsPreview />;
+        return (
+          <ProjectsPreview 
+            isMobile={isMobile}
+            isPortrait={isPortrait}
+          />
+        );
         break;
     }
   }
