@@ -9,7 +9,8 @@
   top: 0;
   left: 0;
   height: $navigation-height;
-  transition: $ease-out-transition;
+  transition: $standard-transition;
+  transition-delay: $standard-time;
   width: 100vw;
   z-index: 9001;
 }
@@ -17,6 +18,7 @@
 .navigation.toggled {
   @include std-box-shadow;
   background-color: rgba(225, 225, 225, 1.0);
+  transition-delay: 0s;
 }
 
 .navigation-logo-wrapper {

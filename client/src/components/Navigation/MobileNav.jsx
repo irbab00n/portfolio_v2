@@ -10,8 +10,6 @@ export default class MobileNav extends React.Component {
   }
 
   handleClick() {
-    // get the HTML to prevent scroll
-    let html = document.getElementsByTagName('html')[0];
     // get the navigation container to toggle on the background
     let navContainer = document.getElementsByClassName('navigation')[0];
     // get the mobile nav toggle button to toggle active class
@@ -28,20 +26,6 @@ export default class MobileNav extends React.Component {
     mobileNavToggle.classList.toggle('is-active'); // Triggers the hamburger -> X transition
     mobileNavMenu.classList.toggle('is-active'); // Toggles the color and size animations for the menu
     navContainer.classList.contains('toggled') ? target.classList.toggle('toggled') : null;
-
-    // lock the scroll on the background
-    // html.classList.toggle('no-scroll'); // Prevents background content from being moved while menu is active
-
-    // if we have an offsetPosition stored in the state
-    // if (this.state.offsetPosition !== null) {
-    //   // set the y offset to the offsetPosition in state
-    //   window.scrollTo(0, this.state.offsetPosition);
-    //   // clear the offsetPosition from the state
-    //   this.setState({offsetPosition: null});
-    // } else {
-    //   // set the offsetPosition to tshe currentOffset
-    //   this.setState({offsetPosition: currentOffset});
-    // }
   }
 
   render() {

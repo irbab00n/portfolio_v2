@@ -91,8 +91,17 @@ COLLAPSE --COMPONENT BASE STYLES-- EXPAND
   z-index: 10;
 }
 
+.video-preview-description {
+  margin: 3vh 0;
+}
+
 @media screen and (orientation: portrait) and (max-width: 1024px) {
+  .video-intro {
+    justify-content: space-between;
+  }
+
   .video-title {
+    margin: 3vh 0;
     font-size: 2vh;
   }
 
@@ -103,4 +112,15 @@ COLLAPSE --COMPONENT BASE STYLES-- EXPAND
 } 
 
 @media screen and (orientation: landscape) and (max-width: 1024px) {
+  .video-intro {
+    justify-content: space-between;
+  }
+
+  .video-title {
+    margin: 8vh 0;
+  }
+
+  .video-preview-description {
+    margin: 8vh 0;
+  }
 }

@@ -3,9 +3,15 @@ import React from 'react';
 export default class BlogPreview extends React.Component {
   constructor(props) {
     super(props);
+    this.renderViewForDevice = this.renderViewForDevice.bind(this);
   }
 
   componentDidMount() {
+  }
+
+  renderViewForDevice(isMobile) {
+    // if the device is mobile, render the mobile view
+    // otherwise, return the desktop view
   }
 
   componentWillUnmount() {
@@ -27,7 +33,9 @@ export default class BlogPreview extends React.Component {
       
     return (
       <div id="selected-feature" className={`about-${wrapperHeight}-ch about-${wrapperWidth}-cw blog-preview`}>
-        Blog Preview
+        {
+          this.renderViewForDevice(isMobile)
+        }
       </div>
     );
   }
