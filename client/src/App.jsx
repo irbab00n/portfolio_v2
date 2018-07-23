@@ -60,8 +60,6 @@ export default class App extends React.Component {
       <div className="content-body">
         <Navigation 
           isMobile={isMobile}
-          jumbotronHeight={jumbotronHeight}
-          currentYOffset={getCurrentYOffset()}
         />
         <Jumbotron
           currentYOffset={getCurrentYOffset()}

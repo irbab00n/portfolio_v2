@@ -1,0 +1,7 @@
+.blog-preview {
+  @include flex;
+  @include flex-column;
+  @include align-center;
+  @include justify-center;
+  background-color: $bg-tertiary-color;
+}

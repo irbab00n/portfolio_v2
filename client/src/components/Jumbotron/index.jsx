@@ -6,7 +6,6 @@ export default class Jumbotron extends React.Component {
   constructor(props) {
     super(props);
     this.handleScroll = this.handleScroll.bind(this);
-    this.handleTargetMouseOver = this.handleTargetMouseOver.bind(this);
   }
 
   handleScroll() {
@@ -17,11 +16,6 @@ export default class Jumbotron extends React.Component {
       behavior: 'smooth'
     };
     target.scrollIntoView(config);
-  }
-
-  handleTargetMouseOver() {
-    let hoverBackground = document.getElementsByClassName('button-hover-background')[0];
-    hoverBackground.classList.toggle('button-hovered');
   }
 
   render() {
@@ -35,11 +29,10 @@ export default class Jumbotron extends React.Component {
       */
       <div id="jumbotron">
         <div className="jumbotron-images-wrapper">
-          <img className="jumbotron-image-full-size" src={goldenGateSmall}/>
+          <div className="jumbotron-image-full-size" style={{backgroundImage: `url(${goldenGateSmall})`}}/>
         </div>
-        <div id="jumbotron-scroll-target" onMouseEnter={this.handleTargetMouseOver} onMouseLeave={this.handleTargetMouseOver}>
+        <div id="jumbotron-scroll-target">
           <span className="target-button no-select" onClick={this.handleScroll} onTouchStart={this.handleScroll}>Start here!</span>
-          <div className="button-hover-background"/>
         </div>
       </div>
 

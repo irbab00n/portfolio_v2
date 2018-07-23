@@ -54,7 +54,7 @@ export default class VideoIntro extends React.Component {
             onReady={this.toggleVideoLoading}
           />
         </div>
-        <div className="">
+        <div className="video-preview-description">
           To learn more about me, go to this link
         </div>
       </div>
