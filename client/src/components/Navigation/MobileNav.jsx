@@ -11,7 +11,7 @@ export default class MobileNav extends React.Component {
   }
 
   componentDidMount() {
-    ReactDOM.findDOMNode(this).addEventListener('touchstart', this.handleClick);
+    ReactDOM.findDOMNode(this).addEventListener('touchstart', this.handleClick, {passive: false});
   }
 
   componentWillUnmount() {
