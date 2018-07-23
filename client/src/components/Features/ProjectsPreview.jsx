@@ -57,9 +57,7 @@ export default class ProjectsPreview extends React.Component {
       
     return (
       <div id="selected-feature" className={`about-${wrapperHeight}-ch about-${wrapperWidth}-cw projects-preview`}>
-        {
-          this.renderViewForDevice(isMobile)
-        }
+        <h1>Feature soon to come!</h1>
       </div>
     );
   }

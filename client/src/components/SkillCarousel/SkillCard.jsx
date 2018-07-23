@@ -8,11 +8,6 @@ export default class SkillCard extends React.Component {
     };
     this.buildClassList = this.buildClassList.bind(this);
     this.calculateCardWidth = this.calculateCardWidth.bind(this);
-    this.handleOrientationChange = this.handleOrientationChange.bind(this);
-  }
-
-  componentDidMount() {
-    window.addEventListener('orientationchange', this.handleOrientationChange);
   }
 
   buildClassList(isPortrait, isMobile) {
@@ -29,16 +24,6 @@ export default class SkillCard extends React.Component {
     isMobile ? finalWidth = 50 : null; // if mobile, default to 50% for landscape
     isPortrait ? finalWidth = 100 : null; // if portrait, set width to 100%
     return {minWidth: `${finalWidth}%`};
-  }
-
-  handleOrientationChange() {
-    this.setState({
-      orientationListener: !this.state.orientationListener
-    });
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('orientationchange', this.handleOrientationChange);
   }
 
   render() {

@@ -28,7 +28,8 @@
   @include perspective(100vh);
   @include perspective-preserve-3d;
   height: $navigation-height;
-  width: 20vw;
+  max-width: 20vw;
+  width: 100%;
 
   .navigation-logo-gradient {
     background: linear-gradient(to right, rgba(0, 122, 193, 1.0) 0%, rgba(125, 125, 125, 0.1) 60%, transparent);
@@ -120,6 +121,7 @@
 
   .navigation-logo-wrapper {
     height: $navigation-height-mobile-portrait;
+    max-width: 40vw;
     width: 40vw;
 
     .navigation-logo-gradient {

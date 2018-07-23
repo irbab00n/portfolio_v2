@@ -1,16 +1,18 @@
-module.exports = (nextYOffset, jumbotronHeight, jumbotronTarget) => {
+module.exports = (nextYOffset, jumbotronHeight) => {
   let nav = document.getElementsByClassName('navigation')[0];
   let mobileNavToggle = document.getElementsByClassName('mobile-nav-toggle')[0];
   let jstEl = document.getElementById('jumbotron-scroll-target');
+
+  let jstTrigger = (jumbotronHeight * 0.7) - jstEl.offsetHeight;
 
   if (mobileNavToggle.classList.contains('is-active')) {
     return;
   }
   let targetHasToggled = jstEl.classList.contains('toggled');
 
-  if (nextYOffset >= jumbotronTarget) {
+  if (nextYOffset >= jstTrigger) {
     targetHasToggled ? null : jstEl.classList.toggle('toggled');
-  } else if (nextYOffset < jumbotronTarget && nextYOffset >= 0) {
+  } else if (nextYOffset < jstTrigger && nextYOffset >= 0) {
     targetHasToggled ? jstEl.classList.toggle('toggled') : null;
   }
 

@@ -40,7 +40,9 @@ export default class Navigation extends React.Component {
 
       <div className="navigation">
 
-        <Logo />
+        <Logo 
+          isMobile={isMobile}
+        />
 
         <DesktopNav />
 

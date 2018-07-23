@@ -19,6 +19,7 @@
   @include align-center;
   @include justify-center;
   align-self: flex-end;
+  cursor: pointer;
   min-height: $navigation-height;
   opacity: 1.0;
   position: absolute;
@@ -51,8 +52,7 @@
 }
 
 .jumbotron-image-full-size {
-  height: 100vh;
-  width: 100%;
+  height: 100%;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;

@@ -33,9 +33,7 @@ export default class BlogPreview extends React.Component {
       
     return (
       <div id="selected-feature" className={`about-${wrapperHeight}-ch about-${wrapperWidth}-cw blog-preview`}>
-        {
-          this.renderViewForDevice(isMobile)
-        }
+        <h1>Feature soon to come!</h1>
       </div>
     );
   }

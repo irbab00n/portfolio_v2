@@ -15,7 +15,6 @@ export default class App extends React.Component {
     this.state = {
       isPortrait: window.innerHeight > window.innerWidth,
       jumbotronHeight: 0,
-      jumbotronTarget: 0
     };
     this.masterScrollHandler = this.masterScrollHandler.bind(this);
     this.updateViewInformation = this.updateViewInformation.bind(this);
@@ -28,17 +27,15 @@ export default class App extends React.Component {
 
   masterScrollHandler() {
     let currentYOffset = getCurrentYOffset();
-    navScrollHandler(currentYOffset, this.state.jumbotronHeight, this.state.jumbotronTarget);
+    navScrollHandler(currentYOffset, this.state.jumbotronHeight);
     window.requestAnimationFrame(this.masterScrollHandler);
   }
 
   updateViewInformation() {
     let jumbotronHeight = document.getElementById('jumbotron').offsetHeight;
-    let jumbotronTarget = jumbotronHeight - document.getElementById('jumbotron-scroll-target').offsetHeight;
     this.setState({
       isPortrait: window.innerHeight > window.innerWidth,
       jumbotronHeight,
-      jumbotronTarget
     }, this.masterScrollHandler);
   }
 
