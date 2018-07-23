@@ -1,5 +1,6 @@
 import React from 'react';
-import SkillCard from './SkillCard';
+import Control from './Control';
+import SkillCard from './SkillCard'
 
 import { skills } from './skills';
 
@@ -12,7 +13,6 @@ export default class SkillCarousel extends React.Component {
       index: 0
     };
     this.calculateXTranslate = this.calculateXTranslate.bind(this);
-    this.renderControlType = this.renderControlType.bind(this);
     this.renderSkillsCarousel = this.renderSkillsCarousel.bind(this);
     this.updateCarouselIndex = this.updateCarouselIndex.bind(this);
   }
@@ -40,37 +40,6 @@ export default class SkillCarousel extends React.Component {
     let cardSize = 100 / sizeDivision;
     let transformPercent = cardSize * index;
     return {transform: `translateX(${-transformPercent}%)`};
-  }
-
-  renderControlType(isMobile, height, direction) {
-    let update = 'dec';
-    let tag = 10094;
-
-    direction === 'right' ? (update = 'inc', tag = 10095) : null;
-
-    if (isMobile) {
-      return (
-        <div 
-          className={`about-${height}-ch control control-${direction} no-select`}
-          onTouchEnd={
-            (e) => this.updateCarouselIndex(e, update)
-          }
-        >
-          {String.fromCharCode(tag)}
-        </div>
-      );
-    } else {
-      return (
-        <div
-          className={`about-${height}-ch control control-${direction} no-select`}
-          onClick={
-            (e) => this.updateCarouselIndex(e, update)
-          }
-        >
-          {String.fromCharCode(tag)}
-        </div>
-      );
-    }
   }
 
   renderSkillsCarousel(index) {
@@ -159,12 +128,18 @@ export default class SkillCarousel extends React.Component {
           this.renderSkillsCarousel(index)
         }
         <div className={`about-${height}-ch about-full-cw skill-control-box`}>
-          {
-            this.renderControlType(isMobile, height, 'left')
-          }          
-          {
-            this.renderControlType(isMobile, height, 'right')
-          }  
+          <Control
+            isMobile={isMobile} 
+            height={height}
+            direction={'left'}
+            updateFunction={this.updateCarouselIndex}
+          />          
+          <Control
+            isMobile={isMobile} 
+            height={height}
+            direction={'right'}
+            updateFunction={this.updateCarouselIndex}
+          />
         </div>
       </div>
     );
