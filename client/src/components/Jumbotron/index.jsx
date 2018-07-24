@@ -28,9 +28,7 @@ export default class Jumbotron extends React.Component {
         we will have change the element type to a <div> that uses the images as a background
       */
       <div id="jumbotron">
-        <div className="jumbotron-images-wrapper">
-          <div className="jumbotron-image-full-size" style={{backgroundImage: `url(${goldenGateSmall})`}}/>
-        </div>
+        <div className="jumbotron-image-full-size" style={{backgroundImage: `url(${goldenGateSmall})`}}/>
         <div id="jumbotron-scroll-target" onClick={this.handleScroll} onTouchStart={this.handleScroll}>
           <span className="target-button">Start here!</span>
         </div>
