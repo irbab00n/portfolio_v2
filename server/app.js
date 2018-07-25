@@ -8,4 +8,8 @@ app.use(express.static(path.join(__dirname, '../client/public')));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+app.get('/*', (req, res) => {
+  res.sendFile(`${_public}/index.html`);
+});
+
 module.exports = app;

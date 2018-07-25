@@ -2,7 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch, hashHistory } from 'react-router-dom';
 import Navigation from './components/Navigation';
 
+import About from './pages/About';
+import Blog from './pages/Blog';
 import Home from './pages/Home';
+import Projects from './pages/Projects';
 
 import './sass/main.scss';
 
@@ -12,7 +15,6 @@ export default class App extends React.Component {
     this.state = {
       isPortrait: window.innerHeight > window.innerWidth,
       isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
-      jumbotronHeight: 0,
     };
     this.updateViewInformation = this.updateViewInformation.bind(this);
   }
@@ -42,7 +44,7 @@ export default class App extends React.Component {
       on a global level, such as the current Y offset of the page, whether or not the view is mobile
       and we need a flag in JavaScript.
     */
-    const { isPortrait, isMobile, jumbotronHeight } = this.state;
+    const { isPortrait, isMobile } = this.state;
 
     return (
       <div className="content-body">
@@ -53,6 +55,9 @@ export default class App extends React.Component {
         <Router history={hashHistory}>
           <Switch>
             <Route exact path="/" render={ () => <Home isMobile={isMobile} isPortrait={isPortrait}/> }/>
+            <Route path="/about" component={About}/>
+            <Route path="/blog" component={Blog}/>
+            <Route path="/projects" component={Projects}/>
           </Switch>
         </Router>
       </div>
