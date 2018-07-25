@@ -3,7 +3,6 @@ import Logo from './Logo';
 import DesktopNav from './DesktopNav';
 import MobileNav from './MobileNav';
 
-import navScrollHandler from '../../lib/navScrollHandler';
 import shallowEqual from '../../lib/shallowEqual';
 
 export default class Navigation extends React.Component {

@@ -40,7 +40,7 @@ COLLAPSE --COMPONENT BASE STYLES-- EXPAND
 .video-title {
   text-align: center;
   text-shadow: 0 0 1.2vh rgba(15, 15, 15, 1.0);
-  font-size: 5vh;
+  font-size: 3vh;
 }
 
 /* 
@@ -95,7 +95,7 @@ COLLAPSE --COMPONENT BASE STYLES-- EXPAND
   margin: 3vh 0;
 }
 
-@media screen and (orientation: portrait) and (max-width: 1024px) {
+@media screen and (orientation: portrait) and (max-width: 1000px) {
   .video-intro {
     justify-content: space-between;
   }
@@ -111,7 +111,7 @@ COLLAPSE --COMPONENT BASE STYLES-- EXPAND
   }
 } 
 
-@media screen and (orientation: landscape) and (max-width: 1024px) {
+@media screen and (orientation: landscape) and (max-width: 1000px) {
   .video-intro {
     justify-content: space-between;
   }

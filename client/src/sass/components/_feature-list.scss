@@ -31,7 +31,7 @@
   cursor: default;
 }
 
-@media screen and (orientation: portrait) and (max-width: 1024px) {
+@media screen and (orientation: portrait) and (max-width: 1000px) {
   .feature-list {
     flex-direction: row;
   }
@@ -42,5 +42,5 @@
   }
 }
 
-@media screen and (orientation: landscape) and (max-width: 1024px) {
+@media screen and (orientation: landscape) and (max-width: 1000px) {
 }

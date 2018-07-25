@@ -14,7 +14,7 @@ export default class Logo extends React.Component {
   }
 
   componentDidMount() {
-    let {isMobile} = this.props;
+    let { isMobile } = this.props;
     let event = isMobile ? 'touchstart' : 'click';
     ReactDOM.findDOMNode(this).addEventListener(event, this.handleHomeScroll, {passive: false});
   }
@@ -25,14 +25,13 @@ export default class Logo extends React.Component {
 
   handleHomeScroll(e) {
     e.preventDefault();
-    document.getElementById('jumbotron').scrollIntoView(scrollConfig);
   };
 
   render() {
     return (
       <div className="navigation-logo-wrapper">
         <div className="navigation-logo-gradient"/>
-        <a className="navigation-logo" />
+        <a className="navigation-logo" href="/"/>
       </div>
     );
   }

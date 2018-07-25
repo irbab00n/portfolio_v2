@@ -8,42 +8,34 @@ export default class Control extends React.Component {
   }
 
   componentDidMount() {
-    let { isMobile } = this.props;
-    ReactDOM.findDOMNode(this).addEventListener(isMobile ? 'touchend': 'click', this.handleClick, {passive: false});
+    let { direction, isMobile, updateFunction } = this.props;
+    let update = 'dec';
+
+    direction === 'right' ? update = 'inc' : null;
+
+    ReactDOM.findDOMNode(this).addEventListener(isMobile ? 'touchend': 'click', e => this.props.updateFunction(e, update), {passive: false});
   }
 
   componentWillUnmount() {
-    let { isMobile } = this.props;
-    ReactDOM.findDOMNode(this).removeEventListener(isMobile ? 'touchend': 'click', this.handleClick,);
+    let { direction, isMobile, updateFunction } = this.props;
+    let update = 'dec';
+
+    direction === 'right' ? update = 'inc' : null;
+
+    ReactDOM.findDOMNode(this).removeEventListener(isMobile ? 'touchend': 'click', e => this.props.updateFunction(e, update), {passive: false});
   }
 
   renderControlType() {
-    let { direction, height, isMobile, updateFunction } = this.props;
-
-    let update = 'dec';
+    let { direction, height } = this.props;
     let tag = 10094;
 
-    direction === 'right' ? (update = 'inc', tag = 10095) : null;
+    direction === 'right' ? tag = 10095 : null;
 
-    if (isMobile) {
-      return (
-        <div 
-          className={`about-${height}-ch control control-${direction} no-select`}
-          onTouchEnd={e => updateFunction(e, update)}
-        >
-          {String.fromCharCode(tag)}
-        </div>
-      );
-    } else {
-      return (
-        <div
-          className={`about-${height}-ch control control-${direction} no-select`}
-          onClick={e => updateFunction(e, update)}
-        >
-          {String.fromCharCode(tag)}
-        </div>
-      );
-    }
+    return (
+      <div className={`about-${height}-ch control control-${direction} no-select`}>
+        {String.fromCharCode(tag)}
+      </div>
+    );
   }
 
   render() {
