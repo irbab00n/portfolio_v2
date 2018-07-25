@@ -24,7 +24,10 @@ export default class Logo extends React.Component {
   }
 
   handleHomeScroll(e) {
-    e.preventDefault();
+    if (window.location.pathname === '/') {
+      e.preventDefault();
+      document.getElementById('jumbotron').scrollIntoView(scrollConfig);
+    }
   };
 
   render() {
