@@ -1,10 +1,10 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link, Switch, hashHistory } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Jumbotron from './components/Jumbotron';
 import Features from './components/Features';
 
 import getCurrentYOffset from './lib/getCurrentYOffset';
-import getDocumentHeight from './lib/getDocumentHeight';
 import navScrollHandler from './lib/navScrollHandler';
 
 import './sass/main.scss';
