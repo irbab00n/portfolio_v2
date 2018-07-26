@@ -38,9 +38,9 @@ export default class VideoIntro extends React.Component {
 
     return (
       <div id="selected-feature" className={`about-${wrapperHeight}-ch about-${wrapperWidth}-cw video-intro`}>
-        <h1 className="video-title">
+        <h2 className="video-title">
           Welcome to my portfolio
-        </h1>
+        </h2>
         <div className="video-wrapper">
           <div id="loading" className="video-intro-loading video-intro-loading-active">
             <div className="spinning-loader"/>
