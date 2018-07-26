@@ -49,10 +49,10 @@ export default class App extends React.Component {
         />
         <Router history={hashHistory}>
           <Switch>
-            <Route exact path="/" render={ () => <Home isMobile={isMobile} isPortrait={isPortrait}/> }/>
-            <Route path="/about" component={About}/>
-            <Route path="/blog" component={Blog}/>
-            <Route path="/projects" component={Projects}/>
+            <Route exact path="/"   render={() => <Home isMobile={isMobile} isPortrait={isPortrait}/>}/>
+            <Route path="/about"    render={() => <About isMobile={isMobile} isPortrait={isPortrait}/>}/>
+            <Route path="/blog"     render={() => <Blog isMobile={isMobile} isPortrait={isPortrait}/>}/>
+            <Route path="/projects" render={() => <Projects isMobile={isMobile} isPortrait={isPortrait}/>}/>
           </Switch>
         </Router>
       </div>
