@@ -1,5 +1,6 @@
 module.exports = (nextYOffset, jumbotronHeight) => {
-  let nav = document.getElementsByClassName('navigation')[0];
+  let navContainer = document.getElementsByClassName('navigation')[0];
+  let navEl = document.getElementsByTagName('nav')[0];
   let mobileNavToggle = document.getElementsByClassName('mobile-nav-toggle')[0];
   let jstEl = document.getElementById('jumbotron-scroll-target');
 
@@ -16,11 +17,14 @@ module.exports = (nextYOffset, jumbotronHeight) => {
     targetHasToggled ? jstEl.classList.toggle('toggled') : null;
   }
 
-  let hasToggled = nav.classList.contains('toggled');
+  let containerHasToggled = navContainer.classList.contains('toggled');
+  let elHasToggled = navEl.classList.contains('toggled');
 
-  if (nextYOffset >= jumbotronHeight - nav.offsetHeight && nextYOffset !== 0) {
-    hasToggled ? null : nav.classList.toggle('toggled');
+  if (nextYOffset >= jumbotronHeight - navContainer.offsetHeight && nextYOffset !== 0) {
+    containerHasToggled ? null : navContainer.classList.toggle('toggled');
+    elHasToggled ? null : navEl.classList.toggle('toggled');
   } else {
-    hasToggled ? nav.classList.toggle('toggled') : null;
+    containerHasToggled ? navContainer.classList.toggle('toggled') : null;
+    elHasToggled ? navEl.classList.toggle('toggled') : null;
   }
 }

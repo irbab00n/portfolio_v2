@@ -1,0 +1,22 @@
+/*
+  Base Layout content Heights
+*/
+  // Desktop 100%
+$project-full-content-height: 100vh - $navigation-height;
+  // Mobile Landscape 100%
+$project-full-content-height-mobile-landscape: 100vh - $navigation-height-mobile-landscape;
+  // Mobile Portrait 100%
+$project-full-content-height-mobile-portrait: 100vh - $navigation-height-mobile-portrait;
+
+/*
+  Base Layout content Widths
+*/
+$project-full-content-width: 100%;
+$project-3quart-content-width: 75%;
+$project-half-content-width: 50%;
+$project-quart-content-width: 25%;
+
+.project-content {
+  @include flex;
+  @include flex-column;
+}

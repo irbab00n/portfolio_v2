@@ -6,10 +6,13 @@ export default class About extends React.Component {
   }
 
   componentDidMount() {
-    let nav = document.getElementsByClassName('navigation')[0];
-    let isToggled = nav.classList.contains('toggled');
-    // if the nav is toggled, do nothing, otherwise, toggle it
-    isToggled ? null : nav.classList.toggle('toggled');
+    let navContainer = document.getElementsByClassName('navigation')[0];
+    let navEl = document.getElementsByTagName('nav')[0];
+    let containerIsToggled = navContainer.classList.contains('toggled');
+    let elIsToggled = navEl.classList.contains('toggled');
+    // if the navContainer is toggled, do nothing, otherwise, toggle it
+    containerIsToggled ? null : navContainer.classList.toggle('toggled');
+    elIsToggled ? null : navEl.classList.toggle('toggled');
   }
 
   render() {
