@@ -1,0 +1,12 @@
+.navigation-gutter {
+  height: $navigation-height;
+  width: 100%;
+}
+
+@media screen and (orientation: portrait) and (max-width: 1000px) {
+  height: $navigation-height-mobile-portrait;
+}
+
+@media screen and (orientation: landscape) and (max-width: 1000px) {
+  height: $navigation-height-mobile-landscape;
+}
