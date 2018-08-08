@@ -24,7 +24,8 @@ export default class Projects extends React.Component {
 
   /*
     @param    number    determines the total number of list items to render
-    ! Used to mock up a number of list items
+    
+    Used to mock up a number of list items
   */
   renderListItems(number) {
     let items = [];
@@ -32,6 +33,7 @@ export default class Projects extends React.Component {
 
     for (let i = 0; i < number; i++) {
       if (tracker < 4) {
+        // push in a small list item
         items.push(
           <div key={`list-item-${i}`} className="proj-half-cw proj-half-ch projects-list-item">
             {`item ${i + 1}`}
@@ -39,6 +41,7 @@ export default class Projects extends React.Component {
         );
         tracker += 1;
       } else {
+        // push in a full-size list item
         items.push(
           <div key={`list-item-${i}`} className="proj-full-cw proj-full-ch projects-list-item">
             {`item ${i + 1}`}
