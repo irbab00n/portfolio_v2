@@ -1,5 +1,7 @@
 import React from 'react';
 
+import ProjectListItem from '../components/ProjectListItem';
+
 import toggleNavElements from '../lib/toggleNavElements';
 
 export default class Projects extends React.Component {
@@ -30,25 +32,25 @@ export default class Projects extends React.Component {
   renderListItems(number) {
     let items = [];
     let tracker = 4;
+    let size = '';
 
     for (let i = 0; i < number; i++) {
+
       if (tracker < 4) {
-        // push in a small list item
-        items.push(
-          <div key={`list-item-${i}`} className="proj-half-cw proj-half-ch projects-list-item">
-            {`item ${i + 1}`}
-          </div>
-        );
+        size = 'half';
         tracker += 1;
       } else {
-        // push in a full-size list item
-        items.push(
-          <div key={`list-item-${i}`} className="proj-full-cw proj-full-ch projects-list-item">
-            {`item ${i + 1}`}
-          </div>
-        )
+        size = 'full';
         tracker = 0;
       }
+
+      items.push(
+        <ProjectListItem
+          key={`project-list-item-${i}`}
+          number={i + 1}
+          size={size}
+        />
+      );
     }
 
     return items;
