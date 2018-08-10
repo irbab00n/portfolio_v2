@@ -77,13 +77,10 @@ export default class Projects extends React.Component {
     return (
 
       <div className="project-content">
-
         <div className="navigation-gutter"/>
-
         <div className="proj-full-cw proj-full-ch projects-list-wrapper">
 
           <div id="filter" className={`proj-${filterWidth}-cw proj-full-ch projects-filter-window ${filterStatus}`}>         
-
             {
               filterCollapsed ?
               <div /> :
@@ -97,20 +94,15 @@ export default class Projects extends React.Component {
                 Button
               </div>
             </div>   
-
           </div>
 
           <div id="list" className={`proj-${listWidth}-cw proj-full-ch projects-list`}>
             {
-              this.renderListItems(9)
+              this.renderListItems(20)
             }
           </div>
-
         </div>
-
-
       </div>
-
     );
   }
 }
