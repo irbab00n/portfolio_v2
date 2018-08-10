@@ -2,13 +2,7 @@
   @include flex;
   @include flex-column;
   @include align-center;
-  background-color: rgba(25, 220, 122, 0.2);
   overflow: hidden;
-  transition: $standard-transition;
-
-  &:hover {
-    background-color: rgba(25, 220, 122, 0.4);
-  }
 }
 
 .project-images-wrapper, .project-details-wrapper {
@@ -21,6 +15,22 @@
   width: 100%;
 }
 
+.project-images-wrapper {
+  box-shadow: inset 0 0 2.5vh 1vh rgba(35, 35, 35, 0.7);
+  transition: $standard-transition;
+
+  &.hovered {
+    box-shadow: inset 0 0 5vh 1vh rgba(35, 35, 35, 0.2);    
+  }
+}
+
 .project-details-wrapper {
+  background-color: rgba(0, 122, 193, 0.0);
   transform: translateY(-100%);
+  transition: $standard-transition;
+  z-index: 1;
+
+  &.hovered {
+    background-color: rgba(0, 122, 193, 0.4);    
+  }
 }

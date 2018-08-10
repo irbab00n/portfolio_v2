@@ -20,6 +20,7 @@ export default class ProjectListItem extends React.Component {
   }
 
   render() {
+    let { hovered } = this.state;
     let { data, size } = this.props;
     
     return (
@@ -29,13 +30,20 @@ export default class ProjectListItem extends React.Component {
         onMouseLeave={this.toggleHoveredState}
       >
         <div 
-          className={`project-images-wrapper`}
+          className={`project-images-wrapper ${hovered ? 'hovered' : ''}`}
+          style={
+            {
+              background: `url(${data.pictures[0].link})`,
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover'
+            }
+          }
         >
-          Images
         </div>
         
         <div 
-          className={`project-details-wrapper`}
+          className={`project-details-wrapper ${hovered ? 'hovered' : ''}`}
         >
           Details
         </div>
