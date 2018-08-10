@@ -31,11 +31,12 @@ export default class Projects extends React.Component {
   */
   renderListItems(number) {
     let items = [];
-    let tracker = 4;
     let size = '';
+    let tracker = 4;
 
     for (let i = 0; i < number; i++) {
-
+      
+      // Rules for managing item size
       if (tracker < 4) {
         size = 'half';
         tracker += 1;
@@ -44,6 +45,7 @@ export default class Projects extends React.Component {
         tracker = 0;
       }
 
+      // construct and add the item to the list
       items.push(
         <ProjectListItem
           key={`project-list-item-${i}`}
@@ -80,27 +82,27 @@ export default class Projects extends React.Component {
 
         <div className="proj-full-cw proj-full-ch projects-list-wrapper">
 
-          <div id="filter" className={`proj-${filterWidth}-cw proj-full-ch projects-filter-window ${filterStatus}`}>
-
-
-
-            <div className={`filter-collapse-toggle no-select ${filterStatus}`} onClick={this.handleFilterCollapse}>
-              Button
-            </div>
+          <div id="filter" className={`proj-${filterWidth}-cw proj-full-ch projects-filter-window ${filterStatus}`}>         
 
             {
               filterCollapsed ?
-              null :
+              <div /> :
               <div className="proj-full-cw proj-quart-ch">
                 Anything in this box will need to be hidden before collapse
               </div>
             }
 
+            <div className={`proj-full-cw collapse-button-wrapper ${filterStatus}`}>
+              <div className={`filter-collapse-toggle no-select ${filterStatus}`} onClick={this.handleFilterCollapse}>
+                Button
+              </div>
+            </div>   
+
           </div>
 
           <div id="list" className={`proj-${listWidth}-cw proj-full-ch projects-list`}>
             {
-              this.renderListItems(20)
+              this.renderListItems(9)
             }
           </div>
 

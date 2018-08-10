@@ -1,0 +1,11 @@
+.projects-list-item {
+  @include flex;
+  @include align-center;
+  @include justify-center;
+  background-color: rgba(25, 220, 122, 0.2);
+  transition: $standard-transition;
+
+  &:hover {
+    background-color: rgba(25, 220, 122, 0.4);
+  }
+}
