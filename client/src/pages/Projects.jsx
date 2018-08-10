@@ -1,5 +1,7 @@
 import React from 'react';
 
+import projects from '../lib/projects';
+
 import ProjectListItem from '../components/ProjectListItem';
 
 import toggleNavElements from '../lib/toggleNavElements';
@@ -29,12 +31,12 @@ export default class Projects extends React.Component {
     
     Used to mock up a number of list items
   */
-  renderListItems(number) {
+  renderListItems(collection) {
     let items = [];
     let size = '';
     let tracker = 4;
 
-    for (let i = 0; i < number; i++) {
+    for (let i = 0; i < collection.length; i++) {
       
       // Rules for managing item size
       if (tracker < 4) {
@@ -48,8 +50,8 @@ export default class Projects extends React.Component {
       // construct and add the item to the list
       items.push(
         <ProjectListItem
+          data={collection[i]}
           key={`project-list-item-${i}`}
-          number={i + 1}
           size={size}
         />
       );
@@ -98,7 +100,7 @@ export default class Projects extends React.Component {
 
           <div id="list" className={`proj-${listWidth}-cw proj-full-ch projects-list`}>
             {
-              this.renderListItems(20)
+              this.renderListItems(projects)
             }
           </div>
         </div>

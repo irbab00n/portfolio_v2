@@ -20,7 +20,7 @@ export default class ProjectListItem extends React.Component {
   }
 
   render() {
-    let { number, size } = this.props;
+    let { data, size } = this.props;
     
     return (
       <div 
@@ -28,7 +28,17 @@ export default class ProjectListItem extends React.Component {
         onMouseEnter={this.toggleHoveredState}
         onMouseLeave={this.toggleHoveredState}
       >
-        {`list item ${number}`}
+        <div 
+          className={`project-images-wrapper`}
+        >
+          Images
+        </div>
+        
+        <div 
+          className={`project-details-wrapper`}
+        >
+          Details
+        </div>
       </div>
     );
   }

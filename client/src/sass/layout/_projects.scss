@@ -18,18 +18,22 @@ $project-full-content-width: 100%;
 */
 .proj-full-ch {
   height: $project-full-content-height;
+  min-height: $project-full-content-height;
 }
 
 .proj-3quart-ch {
   height: $project-full-content-height * 0.75;
+  min-height: $project-full-content-height * 0.75;
 }
 
 .proj-half-ch {
   height: $project-full-content-height * 0.50;
+  min-height: $project-full-content-height * 0.50;
 }
 
 .proj-quart-ch {
   height: $project-full-content-height * 0.25;
+  min-height: $project-full-content-height * 0.25;
 }
 
 /*

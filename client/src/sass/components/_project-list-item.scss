@@ -1,11 +1,26 @@
 .projects-list-item {
   @include flex;
+  @include flex-column;
   @include align-center;
-  @include justify-center;
   background-color: rgba(25, 220, 122, 0.2);
+  overflow: hidden;
   transition: $standard-transition;
 
   &:hover {
     background-color: rgba(25, 220, 122, 0.4);
   }
+}
+
+.project-images-wrapper, .project-details-wrapper {
+  @include flex;
+  @include flex-column;
+  @include align-center;
+  @include justify-center;
+  min-height: inherit;
+  position: relative;
+  width: 100%;
+}
+
+.project-details-wrapper {
+  transform: translateY(-100%);
 }
