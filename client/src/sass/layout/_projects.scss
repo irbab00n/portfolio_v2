@@ -18,18 +18,22 @@ $project-full-content-width: 100%;
 */
 .proj-full-ch {
   height: $project-full-content-height;
+  min-height: $project-full-content-height;
 }
 
 .proj-3quart-ch {
   height: $project-full-content-height * 0.75;
+  min-height: $project-full-content-height * 0.75;
 }
 
 .proj-half-ch {
   height: $project-full-content-height * 0.50;
+  min-height: $project-full-content-height * 0.50;
 }
 
 .proj-quart-ch {
   height: $project-full-content-height * 0.25;
+  min-height: $project-full-content-height * 0.25;
 }
 
 /*
@@ -73,13 +77,28 @@ $project-full-content-width: 100%;
 
 .projects-filter-window {
   @include flex;
-  @include justify-center;
+  @include flex-column;
+  justify-content: space-between;
   background-color: rgba(125, 22, 220, 0.2);
-  transition: 0.4s ease-in;
-  z-index: 1;
+  transition: 0.2s ease-in;
+  z-index: 1000;
+
+  &.collapsed {
+    background-color: rgba(25, 22, 20, 0.5);
+  }
+}
+
+.collapse-button-wrapper {
+  @include flex;
+  @include align-center;
+  @include justify-center;
+  height: 5vh;
+  min-height: 48px;
+  transition-delay: 0.4s;
 
   &.collapsed {
     justify-content: flex-start;
+    transition-delay: 0.4s;
   }
 }
 
@@ -105,18 +124,6 @@ $project-full-content-width: 100%;
   @include flex;
   background-color: rgba(25, 122, 220, 0.2);
   flex-wrap: wrap;
-  transition: 0.4s ease-in;
+  transition: 0.2s ease-in;
   overflow-y: scroll;
-}
-
-.projects-list-item {
-  @include flex;
-  @include align-center;
-  @include justify-center;
-  background-color: rgba(25, 220, 122, 0.2);
-  transition: $standard-transition;
-
-  &:hover {
-    background-color: rgba(25, 220, 122, 0.4);
-  }
 }

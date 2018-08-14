@@ -1,5 +1,9 @@
 import React from 'react';
 
+import projects from '../lib/projects';
+
+import ProjectListItem from '../components/ProjectListItem';
+
 import toggleNavElements from '../lib/toggleNavElements';
 
 export default class Projects extends React.Component {
@@ -24,28 +28,33 @@ export default class Projects extends React.Component {
 
   /*
     @param    number    determines the total number of list items to render
-    ! Used to mock up a number of list items
+    
+    Used to mock up a number of list items
   */
-  renderListItems(number) {
+  renderListItems(collection) {
     let items = [];
+    let size = '';
     let tracker = 4;
 
-    for (let i = 0; i < number; i++) {
+    for (let i = 0; i < collection.length; i++) {
+      
+      // Rules for managing item size
       if (tracker < 4) {
-        items.push(
-          <div key={`list-item-${i}`} className="proj-half-cw proj-half-ch projects-list-item">
-            {`item ${i + 1}`}
-          </div>
-        );
+        size = 'half';
         tracker += 1;
       } else {
-        items.push(
-          <div key={`list-item-${i}`} className="proj-full-cw proj-full-ch projects-list-item">
-            {`item ${i + 1}`}
-          </div>
-        )
+        size = 'full';
         tracker = 0;
       }
+
+      // construct and add the item to the list
+      items.push(
+        <ProjectListItem
+          data={collection[i]}
+          key={`project-list-item-${i}`}
+          size={size}
+        />
+      );
     }
 
     return items;
@@ -70,40 +79,32 @@ export default class Projects extends React.Component {
     return (
 
       <div className="project-content">
-
         <div className="navigation-gutter"/>
-
         <div className="proj-full-cw proj-full-ch projects-list-wrapper">
 
-          <div id="filter" className={`proj-${filterWidth}-cw proj-full-ch projects-filter-window ${filterStatus}`}>
-
-
-
-            <div className={`filter-collapse-toggle no-select ${filterStatus}`} onClick={this.handleFilterCollapse}>
-              Button
-            </div>
-
+          <div id="filter" className={`proj-${filterWidth}-cw proj-full-ch projects-filter-window ${filterStatus}`}>         
             {
               filterCollapsed ?
-              null :
+              <div /> :
               <div className="proj-full-cw proj-quart-ch">
                 Anything in this box will need to be hidden before collapse
               </div>
             }
 
+            <div className={`proj-full-cw collapse-button-wrapper ${filterStatus}`}>
+              <div className={`filter-collapse-toggle no-select ${filterStatus}`} onClick={this.handleFilterCollapse}>
+                Button
+              </div>
+            </div>   
           </div>
 
           <div id="list" className={`proj-${listWidth}-cw proj-full-ch projects-list`}>
             {
-              this.renderListItems(20)
+              this.renderListItems(projects)
             }
           </div>
-
         </div>
-
-
       </div>
-
     );
   }
 }
