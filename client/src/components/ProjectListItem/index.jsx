@@ -4,39 +4,66 @@ export default class ProjectListItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hovered: false
+      hovered: false,
+      imageIndex: 0,
+      intervalId: null
     };
-    this.toggleHoveredState = this.toggleHoveredState.bind(this);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.incrementImageIndex = this.incrementImageIndex.bind(this);
   }
 
-  /*
-    Toggles the hovered boolean in the state to the opposite of what it is currently set to
-  */
-  toggleHoveredState() {
-    console.log('toggling the hovered state');
+  
+  handleMouseEnter() {
+    let intervalId = setInterval(this.incrementImageIndex, 1000);
     this.setState({
-      hovered: !this.state.hovered
+      hovered: true,
+      intervalId
+    });
+  }
+  
+  handleMouseLeave() {
+    clearInterval(this.state.intervalId);
+    this.setState({
+      hovered: false,
+      imageIndex: 0,
+      intervalId: null
+    });
+  }
+
+  incrementImageIndex() {
+    let { imageIndex } = this.state;
+    let pictureLength = this.props.data.pictures.length;
+
+    let nextIndex = imageIndex + 1;  // default: increment by 1
+
+    // if the nextIndex is the length of the pictures array
+    if (nextIndex === pictureLength) {
+      // set the next Index back to 0
+      nextIndex = 0;
+    }
+
+    this.setState({
+      imageIndex: nextIndex
     });
   }
 
   render() {
-    let { hovered } = this.state;
+    let { hovered, imageIndex } = this.state;
     let { data, size } = this.props;
+
     
     return (
       <div 
         className={`proj-${size}-cw proj-${size}-ch projects-list-item`}
-        onMouseEnter={this.toggleHoveredState}
-        onMouseLeave={this.toggleHoveredState}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
       >
         <div 
           className={`project-images-wrapper ${hovered ? 'hovered' : ''}`}
           style={
             {
-              background: `url(${data.pictures[0].link})`,
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-              backgroundSize: 'cover'
+              background: `url(${data.pictures[imageIndex].link})`
             }
           }
         >
@@ -45,7 +72,8 @@ export default class ProjectListItem extends React.Component {
         <div 
           className={`project-details-wrapper ${hovered ? 'hovered' : ''}`}
         >
-          Details
+          <div className={`project-details-title-${size} ${hovered ? 'hovered' : ''}`}>{data.title}</div>
+          <div className={`project-details-desc-${size} ${hovered ? 'hovered' : ''}`}>Info</div>
         </div>
       </div>
     );
