@@ -15,7 +15,7 @@ export default class ProjectListItem extends React.Component {
 
   
   handleMouseEnter() {
-    let intervalId = setInterval(this.incrementImageIndex, 1000);
+    let intervalId = setInterval(this.incrementImageIndex, 1250);
     this.setState({
       hovered: true,
       intervalId
@@ -73,7 +73,11 @@ export default class ProjectListItem extends React.Component {
           className={`project-details-wrapper ${hovered ? 'hovered' : ''}`}
         >
           <div className={`project-details-title-${size} ${hovered ? 'hovered' : ''}`}>{data.title}</div>
-          <div className={`project-details-desc-${size} ${hovered ? 'hovered' : ''}`}>Info</div>
+          <div className={`project-details-desc-${size} ${hovered ? 'hovered' : ''}`}>
+            <div className={`details-desc-wrapper-${size} ${hovered ? 'hovered' : ''}`}>
+              Description wrapper
+            </div>
+          </div>
         </div>
       </div>
     );

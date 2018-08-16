@@ -30,6 +30,7 @@
 /* PROJECT DETAILS WRAPPER SPECIFIC STYLES */
 .project-details-wrapper {
   @include flex;
+  @include flex-column;
   @include align-center;
   @include justify-center;
   background-color: rgba(0, 122, 193, 0.0);
@@ -55,7 +56,7 @@
   transition: $standard-transition;
   width: 100%;
 }
-// HALF SIZE TITLE STYLES
+  // HALF SIZE TITLE STYLES
 .project-details-title-half {
   font-size: 3vh;
 
@@ -66,7 +67,7 @@
     transform: translate(-32%, -40%);
   }
 }
-// FULL SIZE DETAILS STYLES
+  // FULL SIZE DETAILS STYLES
 .project-details-title-full {
   font-size: 4vh;
 
@@ -77,8 +78,20 @@
     transform: translate(-38%, -40%);
   }
 }
+/* PROJECT LIST ITEM DETAIL DESCRIPTION STYLES */
+.project-details-desc-half, .project-details-desc-full {
+  @include flex
+  @include flex-column;
+  @include align-center;    // Temporary
+  @include justify-center;  // Temporary
+  align-self: flex-end;
+  background-color: rgba(125, 25, 35, 0.6);
+  height: 40%;
+  width: 100%;
+}
+
 /* PROJECT LIST ITEM TITLE ANIMATIONS */ 
-// FULL SIZE ANIMATION
+  // FULL SIZE ANIMATION
 @-webkit-keyframes titleSlideFull {
   0% { transform: translate(0%, 0%); }
   50% { transform: translate(0%, -40%); }
@@ -91,7 +104,7 @@
   60% { transform: translate(0%, -40%); }
   100% { transform: translate(-38%, -40%); }
 }
-// HALF SIZE ANIMATION
+  // HALF SIZE ANIMATION
 @-webkit-keyframes titleSlideHalf {
   0% { transform: translate(0%, 0%); }
   50% { transform: translate(0%, -40%); }
