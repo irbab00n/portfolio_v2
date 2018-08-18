@@ -13,15 +13,16 @@ export default class ProjectListItem extends React.Component {
     this.incrementImageIndex = this.incrementImageIndex.bind(this);
   }
 
-  
+  // Set an interval, save the id in the state, and set hover to true
   handleMouseEnter() {
-    let intervalId = setInterval(this.incrementImageIndex, 1000);
+    let intervalId = setInterval(this.incrementImageIndex, 1250);
     this.setState({
       hovered: true,
       intervalId
     });
   }
   
+  // clear the interval id stored in the state, and reset the element
   handleMouseLeave() {
     clearInterval(this.state.intervalId);
     this.setState({
@@ -31,18 +32,17 @@ export default class ProjectListItem extends React.Component {
     });
   }
 
+  //
   incrementImageIndex() {
     let { imageIndex } = this.state;
     let pictureLength = this.props.data.pictures.length;
-
     let nextIndex = imageIndex + 1;  // default: increment by 1
-
     // if the nextIndex is the length of the pictures array
     if (nextIndex === pictureLength) {
       // set the next Index back to 0
       nextIndex = 0;
     }
-
+    // update the index in the state
     this.setState({
       imageIndex: nextIndex
     });
@@ -73,7 +73,17 @@ export default class ProjectListItem extends React.Component {
           className={`project-details-wrapper ${hovered ? 'hovered' : ''}`}
         >
           <div className={`project-details-title-${size} ${hovered ? 'hovered' : ''}`}>{data.title}</div>
-          <div className={`project-details-desc-${size} ${hovered ? 'hovered' : ''}`}>Info</div>
+          <div className={`project-details-desc-${size} ${hovered ? 'hovered' : ''}`}>
+
+            <div className={`details-description ${hovered ? 'hovered' : ''}`}>
+              {data.description}
+            </div>
+
+            <div className={`details-row-wrapper`}>
+              Techs
+            </div>
+
+          </div>
         </div>
       </div>
     );
